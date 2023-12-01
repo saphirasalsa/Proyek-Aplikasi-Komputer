@@ -1,0 +1,4464 @@
+\documentclass{article}
+
+\usepackage{eumat}
+
+\begin{document}
+\begin{eulernotebook}
+\eulerheading{EMT untuk Perhitungan Aljabar}
+\begin{eulercomment}
+Pada notebook ini Anda belajar menggunakan EMT untuk melakukan berbagai perhitungan
+terkait dengan materi atau topik dalam Aljabar. Kegiatan yang harus Anda lakukan adalah sebagai berikut:
+
+- Membaca secara cermat dan teliti notebook ini;\\
+- Menerjemahkan teks bahasa Inggris ke bahasa Indonesia;\\
+- Mencoba contoh-contoh perhitungan (perintah EMT) dengan cara meng-ENTER setiap
+perintah EMT yang ada (pindahkan kursor ke baris perintah)\\
+- Jika perlu Anda dapat memodifikasi perintah yang ada dan memberikan
+keterangan/penjelasan tambahan terkait hasilnya.\\
+- Menyisipkan baris-baris perintah baru untuk mengerjakan soal-soal Aljabar dari file
+PDF yang saya berikan;\\
+- Memberi catatan hasilnya.\\
+- Jika perlu tuliskan soalnya pada teks notebook (menggunakan format LaTeX).\\
+- Gunakan tampilan hasil semua perhitungan yang eksak atau simbolik dengan format
+LaTeX. (Seperti contoh-contoh pada notebook ini.)
+
+\end{eulercomment}
+\eulersubheading{Contoh pertama}
+\begin{eulercomment}
+Menyederhanakan bentuk aljabar:
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+6x^{-3}y^5\times -7x^2y^{-9}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+\end{eulercomment}
+\begin{eulerprompt}
+>$&6*x^(-3)*y^5*-7*x^2*y^(-9)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+-\frac{42}{x\,y^4}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Menjabarkan:
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+(6x^{-3}+y^5)(-7x^2-y^{-9})
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&showev('expand((6*x^(-3)+y^5)*(-7*x^2-y^(-9))))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it expand}\left(\left(-\frac{1}{y^9}-7\,x^2\right)\,\left(y^5+  \frac{6}{x^3}\right)\right)=-7\,x^2\,y^5-\frac{1}{y^4}-\frac{6}{x^3  \,y^9}-\frac{42}{x}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+\end{eulercomment}
+\eulersubheading{Baris Perintah}
+\begin{eulercomment}
+Baris perintah Euler terdiri dari satu atau beberapa perintah Euler
+diikuti dengan titik koma ";" atau koma ",". Titik koma mencegah
+pencetakan hasilnya. Koma setelah perintah terakhir dapat dihilangkan.
+
+Baris perintah berikut hanya akan mencetak hasil ekspresi, bukan tugas
+atau perintah format.
+\end{eulercomment}
+\begin{eulerprompt}
+>r:=2; h:=4; pi*r^2*h/3
+\end{eulerprompt}
+\begin{euleroutput}
+  16.7551608191
+\end{euleroutput}
+\begin{eulercomment}
+Perintah harus dipisahkan dengan yang kosong. Baris perintah berikut
+mencetak kedua hasilnya.
+\end{eulercomment}
+\begin{eulerprompt}
+>pi*2*r*h, %+2*pi*r*h // Ingat tanda % menyatakan hasil perhitungan terakhir sebelumnya
+\end{eulerprompt}
+\begin{euleroutput}
+  50.2654824574
+  100.530964915
+\end{euleroutput}
+\begin{eulercomment}
+Baris perintah dijalankan sesuai urutan yang ditekan pengguna kembali.
+Jadi, Anda mendapatkan nilai baru setiap kali Anda menjalankan baris
+kedua.
+\end{eulercomment}
+\begin{eulerprompt}
+>x := 1;
+>x := cos(x) // nilai cosinus (x dalam radian)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.540302305868
+\end{euleroutput}
+\begin{eulerprompt}
+>x := cos(x)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.857553215846
+\end{euleroutput}
+\begin{eulercomment}
+Jika dua jalur dihubungkan dengan "..." kedua jalur akan selalu
+dijalankan secara bersamaan.
+\end{eulercomment}
+\begin{eulerprompt}
+>x := 1.5; ...
+>x := (x+2/x)/2, x := (x+2/x)/2, x := (x+2/x)/2, 
+\end{eulerprompt}
+\begin{euleroutput}
+  1.41666666667
+  1.41421568627
+  1.41421356237
+\end{euleroutput}
+\begin{eulercomment}
+Ini juga merupakan cara yang baik untuk menyebarkan perintah panjang
+ke dua baris atau lebih. Anda dapat menekan Ctrl+Return untuk\\
+membagi baris menjadi dua pada posisi kursor saat ini, atau Ctlr+Back
+untuk menggabungkan baris.
+
+Untuk melipat semua multi-garis tekan Ctrl+L. Maka garis-garis
+berikutnya hanya akan terlihat, jika salah satunya mendapat fokus.
+Untuk melipat satu multi-baris, mulailah baris pertama dengan "\%+".
+\end{eulercomment}
+\begin{eulerprompt}
+>%+ x=4+5; ...
+\end{eulerprompt}
+\begin{eulercomment}
+Baris yang dimulai dengan \%\% tidak akan terlihat sama sekali.
+\end{eulercomment}
+\begin{euleroutput}
+  81
+\end{euleroutput}
+\begin{eulercomment}
+Euler mendukung loop di baris perintah, asalkan cocok ke dalam satu
+baris atau multi-baris. Tentu saja, pembatasan ini tidak berlaku dalam\\
+program. Untuk informasi lebih lanjut lihat pendahuluan berikut.
+
+\end{eulercomment}
+\begin{eulerprompt}
+>x=1; for i=1 to 5; x := (x+2/x)/2, end; // menghitung akar 2
+\end{eulerprompt}
+\begin{euleroutput}
+  1.5
+  1.41666666667
+  1.41421568627
+  1.41421356237
+  1.41421356237
+\end{euleroutput}
+\begin{eulercomment}
+Tidak apa-apa menggunakan multi-baris. Pastikan baris diakhiri dengan
+"...".
+
+\end{eulercomment}
+\begin{eulerprompt}
+>x := 1.5; // comments go here before the ...
+>repeat xnew:=(x+2/x)/2; until xnew~=x; ...
+>   x := xnew; ...
+>end; ...
+>x,
+\end{eulerprompt}
+\begin{euleroutput}
+  1.41421356237
+\end{euleroutput}
+\begin{eulercomment}
+Struktur bersyarat juga berfungsi.
+\end{eulercomment}
+\begin{eulerprompt}
+>if E^pi>pi^E; then "Thought so!", endif;
+\end{eulerprompt}
+\begin{euleroutput}
+  Thought so!
+\end{euleroutput}
+\begin{eulercomment}
+Saat Anda menjalankan perintah, kursor dapat berada di posisi mana pun
+di baris perintah. Anda dapat kembali ke perintah sebelumnya\\
+atau melompat ke perintah berikutnya dengan tombol panah. Atau Anda
+dapat mengklik bagian komentar di atas perintah untuk membuka
+perintah.
+
+Saat Anda menggerakkan kursor di sepanjang garis, pasangan tanda
+kurung atau tanda kurung buka dan tutup akan disorot. Juga, perhatikan
+baris status. Setelah tanda kurung buka dari fungsi sqrt(), baris
+status akan menampilkan teks bantuan untuk fungsi tersebut.\\
+Jalankan perintah dengan kunci kembali.
+\end{eulercomment}
+\begin{eulerprompt}
+>sqrt(sin(10°)/cos(20°))
+\end{eulerprompt}
+\begin{euleroutput}
+  0.429875017772
+\end{euleroutput}
+\begin{eulercomment}
+Untuk melihat bantuan untuk perintah terbaru, buka jendela bantuan
+dengan F1. Di sana, Anda dapat memasukkan teks untuk\\
+dicari. Pada baris kosong, bantuan untuk jendela bantuan akan
+ditampilkan. Anda dapat menekan escape untuk menghapus garis,\\
+atau untuk menutup jendela bantuan.
+
+Anda dapat mengklik dua kali pada perintah apa pun untuk membuka
+bantuan untuk perintah ini. Coba klik dua kali pada exp command di
+bawah pada baris perintah.
+\end{eulercomment}
+\begin{eulerprompt}
+>exp(log(2.5))
+\end{eulerprompt}
+\begin{euleroutput}
+  2.5
+\end{euleroutput}
+\begin{eulercomment}
+Anda juga dapat menyalin dan menempel di Euler. Gunakan Ctrl-C dan
+Ctrl-V untuk ini. Untuk menandai teks, seret mouse atau gunakan shift\\
+bersamaan dengan tombol kursor apa pun. Selain itu, Anda dapat
+menyalin tanda kurung yang disorot.
+\end{eulercomment}
+\begin{eulercomment}
+
+\end{eulercomment}
+\eulersubheading{Sintaks Dasar}
+\begin{eulercomment}
+Euler mengetahui fungsi matematika biasa. Seperti yang Anda lihat di
+atas, fungsi trigonometri bekerja dalam radian atau derajat. Untuk\\
+mengonversi ke derajat, tambahkan simbol derajat (dengan tombol F7) ke
+nilainya, atau gunakan fungsi rad(x). Fungsi akar kuadrat disebut\\
+sqrt di Euler. Tentu saja, x\textasciicircum{}(1/2) juga dimungkinkan.
+
+Untuk menyetel variabel, gunakan "=" atau ":=". Demi kejelasan,
+pendahuluan ini menggunakan bentuk yang terakhir. Spasi tidak penting.\\
+Tapi jarak antar perintah diharapkan.
+
+Beberapa perintah dalam satu baris dipisahkan dengan "," atau ";".
+Titik koma menekan keluaran perintah. Di akhir baris perintah, ","\\
+diasumsikan, jika ";" hilang.
+\end{eulercomment}
+\begin{eulerprompt}
+>g:=9.81; t:=2.5; 1/2*g*t^2
+\end{eulerprompt}
+\begin{euleroutput}
+  30.65625
+\end{euleroutput}
+\begin{eulercomment}
+EMT uses a programming syntax for expressions. To enter
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+e^2 \cdot \left( \frac{1}{3+4 \log(0.6)}+\frac{1}{7} \right)
+\]
+\end{eulerformula}
+\begin{eulercomment}
+you have to set the correct brackets and use / for fractions. Watch the highlighted
+brackets for assistance. Note that the Euler constant e is named E in EMT.
+\end{eulercomment}
+\begin{eulerprompt}
+>E^2*(1/(3+4*log(0.6))+1/7)
+\end{eulerprompt}
+\begin{euleroutput}
+  8.77908249441
+\end{euleroutput}
+\begin{eulercomment}
+To compute a complicate expression like
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+\left(\frac{\frac17 + \frac18 + 2}{\frac13 + \frac12}\right)^2 \pi
+\]
+\end{eulerformula}
+\begin{eulercomment}
+you need to enter it in line form.
+\end{eulercomment}
+\begin{eulerprompt}
+>((1/7 + 1/8 + 2) / (1/3 + 1/2))^2 * pi
+\end{eulerprompt}
+\begin{euleroutput}
+  23.2671801626
+\end{euleroutput}
+\begin{eulercomment}
+Carefully put brackets around sub-expressions that need to be computed first. 
+EMT assists you by highlighting the expression that the closing bracket finishes. 
+You will also have to enter the name "pi" for the Greek letter pi.
+
+The result of this computation is a floating point number. It is by
+default printed with about 12 digits accuracy.
+In the following command line, we also learn how we can refer to the previous
+result within the same line.
+\end{eulercomment}
+\begin{eulerprompt}
+>1/3+1/7, fraction %
+\end{eulerprompt}
+\begin{euleroutput}
+  0.47619047619
+  10/21
+\end{euleroutput}
+\begin{eulercomment}
+An Euler command can be an expression or a primitive command. An expression
+is made of operators and functions. If necessary, it must contain brackets to
+force the correct order of execution. In doubt, setting a bracket is a good
+idea. Note that EMT shows opening and closing brackets while editing the
+command line.
+\end{eulercomment}
+\begin{eulerprompt}
+>(cos(pi/4)+1)^3*(sin(pi/4)+1)^2
+\end{eulerprompt}
+\begin{euleroutput}
+  14.4978445072
+\end{euleroutput}
+\begin{eulercomment}
+The numerical operators of Euler include
+
+\end{eulercomment}
+\begin{eulerttcomment}
+ + unary or operator plus
+ - unary or operator minus
+ *, /
+ . the matrix product
+ a^b power for positive a or integer b (a**b works too)
+ n! the factorial operator
+\end{eulerttcomment}
+\begin{eulercomment}
+
+and many more.
+
+Here are some of the functions you might need. There are many more.
+
+\end{eulercomment}
+\begin{eulerttcomment}
+ sin,cos,tan,atan,asin,acos,rad,deg
+ log,exp,log10,sqrt,logbase
+ bin,logbin,logfac,mod,floor,ceil,round,abs,sign
+ conj,re,im,arg,conj,real,complex
+ beta,betai,gamma,complexgamma,ellrf,ellf,ellrd,elle
+ bitand,bitor,bitxor,bitnot
+\end{eulerttcomment}
+\begin{eulercomment}
+
+Some commands have aliases, e.g. ln for log.
+\end{eulercomment}
+\begin{eulerprompt}
+>ln(E^2), arctan(tan(0.5))
+\end{eulerprompt}
+\begin{euleroutput}
+  2
+  0.5
+\end{euleroutput}
+\begin{eulerprompt}
+>sin(30°)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.5
+\end{euleroutput}
+\begin{eulercomment}
+Make sure to use parentheses (round brackets), whenever there is doubt about
+the order of execution! The following is not the same as (2\textasciicircum{}3)\textasciicircum{}4, which is
+the default for 2\textasciicircum{}3\textasciicircum{}4 in EMT (some numerical systems do it the other way).
+\end{eulercomment}
+\begin{eulerprompt}
+>2^3^4, (2^3)^4, 2^(3^4)
+\end{eulerprompt}
+\begin{euleroutput}
+  2.41785163923e+24
+  4096
+  2.41785163923e+24
+\end{euleroutput}
+\eulersubheading{Real Numbers}
+\begin{eulercomment}
+The primary data type in Euler is the real number. Reals are
+represented in IEEE format with about 16 decimal digits of accuracy.
+\end{eulercomment}
+\begin{eulerprompt}
+>longest 1/3
+\end{eulerprompt}
+\begin{euleroutput}
+       0.3333333333333333 
+\end{euleroutput}
+\begin{eulercomment}
+The internal dual representation takes 8 bytes.
+\end{eulercomment}
+\begin{eulerprompt}
+>printdual(1/3)
+\end{eulerprompt}
+\begin{euleroutput}
+  1.0101010101010101010101010101010101010101010101010101*2^-2
+\end{euleroutput}
+\begin{eulerprompt}
+>printhex(1/3)
+\end{eulerprompt}
+\begin{euleroutput}
+  5.5555555555554*16^-1
+\end{euleroutput}
+\eulersubheading{Strings}
+\begin{eulercomment}
+A string in Euler is defined with "...".
+\end{eulercomment}
+\begin{eulerprompt}
+>"A string can contain anything."
+\end{eulerprompt}
+\begin{euleroutput}
+  A string can contain anything.
+\end{euleroutput}
+\begin{eulercomment}
+Strings can be concatenated with \textbar{} or with +. This also works with numbers,
+which are converted to strings in that case.
+\end{eulercomment}
+\begin{eulerprompt}
+>"The area of the circle with radius " + 2 + " cm is " + pi*4 + " cm^2."
+\end{eulerprompt}
+\begin{euleroutput}
+  The area of the circle with radius 2 cm is 12.5663706144 cm^2.
+\end{euleroutput}
+\begin{eulercomment}
+The print function does also convert a number to a string. It can take a
+number of digits and a number of places (0 for dense output), and optimally a
+unit.
+\end{eulercomment}
+\begin{eulerprompt}
+>"Golden Ratio : " + print((1+sqrt(5))/2,5,0)
+\end{eulerprompt}
+\begin{euleroutput}
+  Golden Ratio : 1.61803
+\end{euleroutput}
+\begin{eulercomment}
+There is a special string none, which does not print. It is returned by some
+functions, when the result does not matter. (It is returned automatically, if
+the function does not have a return statement.)
+\end{eulercomment}
+\begin{eulerprompt}
+>none
+\end{eulerprompt}
+\begin{eulercomment}
+To convert a string to a number simply evaluate it. This works for
+expressions too (see below).
+\end{eulercomment}
+\begin{eulerprompt}
+>"1234.5"()
+\end{eulerprompt}
+\begin{euleroutput}
+  1234.5
+\end{euleroutput}
+\begin{eulercomment}
+To define a string vector, use the vector [...] notation.
+\end{eulercomment}
+\begin{eulerprompt}
+>v:=["affe","charlie","bravo"]
+\end{eulerprompt}
+\begin{euleroutput}
+  affe
+  charlie
+  bravo
+\end{euleroutput}
+\begin{eulercomment}
+The empty string vector is denoted by [none]. String vectors can be
+concatenated.
+\end{eulercomment}
+\begin{eulerprompt}
+>w:=[none]; w|v|v
+\end{eulerprompt}
+\begin{euleroutput}
+  affe
+  charlie
+  bravo
+  affe
+  charlie
+  bravo
+\end{euleroutput}
+\begin{eulercomment}
+Strings can contain Unicode characters. Internally, these strings contain
+UTF-8 code. To generate such a string, use u"..." and one of the HTML
+entities.
+
+Unicode strings can be concatenated like other strings.
+\end{eulercomment}
+\begin{eulerprompt}
+>u"&alpha; = " + 45 + u"&deg;" // pdfLaTeX mungkin gagal menampilkan secara benar
+\end{eulerprompt}
+\begin{euleroutput}
+  α = 45°
+\end{euleroutput}
+\begin{eulercomment}
+I
+\end{eulercomment}
+\begin{eulercomment}
+In comments, the same entities like α, β etc. can be used. This may be
+a quick alternative to Latex. (More details on comments below).
+\end{eulercomment}
+\begin{eulercomment}
+There are some functions to create or analyze unicode strings. The function
+strtochar() will recognize Unicode strings, and translate them correctly.
+\end{eulercomment}
+\begin{eulerprompt}
+>v=strtochar(u"&Auml; is a German letter")
+\end{eulerprompt}
+\begin{euleroutput}
+  [196,  32,  105,  115,  32,  97,  32,  71,  101,  114,  109,  97,  110,
+  32,  108,  101,  116,  116,  101,  114]
+\end{euleroutput}
+\begin{eulercomment}
+The result is a vector of Unicode numbers. The converse function is
+chartoutf().
+\end{eulercomment}
+\begin{eulerprompt}
+>v[1]=strtochar(u"&Uuml;")[1]; chartoutf(v)
+\end{eulerprompt}
+\begin{euleroutput}
+  Ü is a German letter
+\end{euleroutput}
+\begin{eulercomment}
+The function utf() can translate a string with entities in a variable into a
+Unicode string.
+\end{eulercomment}
+\begin{eulerprompt}
+>s="We have &alpha;=&beta;."; utf(s) // pdfLaTeX mungkin gagal menampilkan secara benar
+\end{eulerprompt}
+\begin{euleroutput}
+  We have α=β.
+\end{euleroutput}
+\begin{eulercomment}
+It is also possible to use numerical entities.
+\end{eulercomment}
+\begin{eulerprompt}
+>u"&#196;hnliches"
+\end{eulerprompt}
+\begin{euleroutput}
+  Ähnliches
+\end{euleroutput}
+\eulersubheading{Boolean Values}
+\begin{eulercomment}
+Boolean values are represented with 1=true or 0=false in Euler.
+Strings can be compared, just like numbers.
+\end{eulercomment}
+\begin{eulerprompt}
+>2<1, "apel"<"banana"
+\end{eulerprompt}
+\begin{euleroutput}
+  0
+  1
+\end{euleroutput}
+\begin{eulercomment}
+"and" is the operator "\&\&" and "or" is the operator "\textbar{}\textbar{}", as in the C
+language. (The words "and" and "or" can only be used in conditions for "if".)
+\end{eulercomment}
+\begin{eulerprompt}
+>2<E && E<3
+\end{eulerprompt}
+\begin{euleroutput}
+  1
+\end{euleroutput}
+\begin{eulercomment}
+Boolean operators obey the rules of the matrix language.
+\end{eulercomment}
+\begin{eulerprompt}
+>(1:10)>5, nonzeros(%)
+\end{eulerprompt}
+\begin{euleroutput}
+  [0,  0,  0,  0,  0,  1,  1,  1,  1,  1]
+  [6,  7,  8,  9,  10]
+\end{euleroutput}
+\begin{eulercomment}
+You can use the function nonzeros() to extract specific elements form a
+vector. In the example, we use the conditional isprime(n).
+\end{eulercomment}
+\begin{eulerprompt}
+>N=2|3:2:99 // N berisi elemen 2 dan bilangan2 ganjil dari 3 s.d. 99
+\end{eulerprompt}
+\begin{euleroutput}
+  [2,  3,  5,  7,  9,  11,  13,  15,  17,  19,  21,  23,  25,  27,  29,
+  31,  33,  35,  37,  39,  41,  43,  45,  47,  49,  51,  53,  55,  57,
+  59,  61,  63,  65,  67,  69,  71,  73,  75,  77,  79,  81,  83,  85,
+  87,  89,  91,  93,  95,  97,  99]
+\end{euleroutput}
+\begin{eulerprompt}
+>N[nonzeros(isprime(N))] //pilih anggota2 N yang prima
+\end{eulerprompt}
+\begin{euleroutput}
+  [2,  3,  5,  7,  11,  13,  17,  19,  23,  29,  31,  37,  41,  43,  47,
+  53,  59,  61,  67,  71,  73,  79,  83,  89,  97]
+\end{euleroutput}
+\eulersubheading{Output Formats}
+\begin{eulercomment}
+The default output format of EMT prints 12 digits. To make sure that
+we see the default, we reset the format.
+\end{eulercomment}
+\begin{eulerprompt}
+>defformat; pi
+\end{eulerprompt}
+\begin{euleroutput}
+  3.14159265359
+\end{euleroutput}
+\begin{eulercomment}
+Internally, EMT uses the IEEE standard for double numbers with about 16
+decimal digits. To see the full number of digits, use the command
+"longestformat", or we use the operator "longest" to display the result in
+the longest format.
+\end{eulercomment}
+\begin{eulerprompt}
+>longest pi
+\end{eulerprompt}
+\begin{euleroutput}
+        3.141592653589793 
+\end{euleroutput}
+\begin{eulercomment}
+Here is the internal hexadecimal representation of a double number.
+\end{eulercomment}
+\begin{eulerprompt}
+>printhex(pi)
+\end{eulerprompt}
+\begin{euleroutput}
+  3.243F6A8885A30*16^0
+\end{euleroutput}
+\begin{eulercomment}
+The output format can be changed permanently with a format command.
+\end{eulercomment}
+\begin{eulerprompt}
+>format(12,5); 1/3, pi, sin(1)
+\end{eulerprompt}
+\begin{euleroutput}
+      0.33333 
+      3.14159 
+      0.84147 
+\end{euleroutput}
+\begin{eulercomment}
+The default is format(12).
+\end{eulercomment}
+\begin{eulerprompt}
+>format(12); 1/3
+\end{eulerprompt}
+\begin{euleroutput}
+  0.333333333333
+\end{euleroutput}
+\begin{eulercomment}
+Functions like "shortestformat", "shortformat", "longformat" work for vectors
+in the following way.
+\end{eulercomment}
+\begin{eulerprompt}
+>shortestformat; random(3,8)
+\end{eulerprompt}
+\begin{euleroutput}
+    0.66    0.2   0.89   0.28   0.53   0.31   0.44    0.3 
+    0.28   0.88   0.27    0.7   0.22   0.45   0.31   0.91 
+    0.19   0.46  0.095    0.6   0.43   0.73   0.47   0.32 
+\end{euleroutput}
+\begin{eulercomment}
+The default format for scalars is format(12). But this can be changed.
+\end{eulercomment}
+\begin{eulerprompt}
+>setscalarformat(5); pi
+\end{eulerprompt}
+\begin{euleroutput}
+  3.1416
+\end{euleroutput}
+\begin{eulercomment}
+The function "longestformat" set the scalar format too.
+\end{eulercomment}
+\begin{eulerprompt}
+>longestformat; pi
+\end{eulerprompt}
+\begin{euleroutput}
+  3.141592653589793
+\end{euleroutput}
+\begin{eulercomment}
+For reference, here is a list of the most important output formats.
+
+\end{eulercomment}
+\begin{eulerttcomment}
+ shortestformat shortformat longformat, longestformat
+ format(length,digits) goodformat(length)
+ fracformat(length)
+ defformat
+\end{eulerttcomment}
+\begin{eulercomment}
+
+The internal accuracy of EMT is about 16 decimal places, which is the IEEE
+standard. Numbers are stored in this internal format.
+
+But the output format of EMT can be set in a flexible way.
+\end{eulercomment}
+\begin{eulerprompt}
+>longestformat; pi,
+\end{eulerprompt}
+\begin{euleroutput}
+  3.141592653589793
+\end{euleroutput}
+\begin{eulerprompt}
+>format(10,5); pi
+\end{eulerprompt}
+\begin{euleroutput}
+    3.14159 
+\end{euleroutput}
+\begin{eulercomment}
+The default is defformat().
+\end{eulercomment}
+\begin{eulerprompt}
+>defformat; // default
+\end{eulerprompt}
+\begin{eulercomment}
+There are short operators which print only one value. The operator "longest"
+will print all valid digits of a number.
+\end{eulercomment}
+\begin{eulerprompt}
+>longest pi^2/2
+\end{eulerprompt}
+\begin{euleroutput}
+        4.934802200544679 
+\end{euleroutput}
+\begin{eulercomment}
+There is also a short operator for printing a result in fractional format. We
+have already used it above.
+\end{eulercomment}
+\begin{eulerprompt}
+>fraction 1+1/2+1/3+1/4
+\end{eulerprompt}
+\begin{euleroutput}
+  25/12
+\end{euleroutput}
+\begin{eulercomment}
+Since the internal format uses a binary way to store numbers, the value 0.1
+will not be represented exactly. The error adds up a bit, as you see in the
+following computation.
+\end{eulercomment}
+\begin{eulerprompt}
+>longest 0.1+0.1+0.1+0.1+0.1+0.1+0.1+0.1+0.1+0.1-1
+\end{eulerprompt}
+\begin{euleroutput}
+   -1.110223024625157e-16 
+\end{euleroutput}
+\begin{eulercomment}
+But with the default "longformat" you will not notice this. For convenience,
+the output of very small numbers is 0.
+\end{eulercomment}
+\begin{eulerprompt}
+>0.1+0.1+0.1+0.1+0.1+0.1+0.1+0.1+0.1+0.1-1
+\end{eulerprompt}
+\begin{euleroutput}
+  0
+\end{euleroutput}
+\eulerheading{Expressions}
+\begin{eulercomment}
+Strings or names can be used to store mathematical expressions, which can be evaluated
+by EMT. For this, use parentheses after the expression. If you intend to use a string
+as an expression, use the convention to name it "fx" or "fxy" etc. Expressions take
+precedence over functions.
+
+Global variables can be used in the evaluation.
+\end{eulercomment}
+\begin{eulerprompt}
+>r:=2; fx:="pi*r^2"; longest fx()
+\end{eulerprompt}
+\begin{euleroutput}
+        12.56637061435917 
+\end{euleroutput}
+\begin{eulercomment}
+Parameters are assigned to x, y, and z in that order. Additional parameters
+can be added using assigned parameters.
+\end{eulercomment}
+\begin{eulerprompt}
+>fx:="a*sin(x)^2"; fx(5,a=-1)
+\end{eulerprompt}
+\begin{euleroutput}
+  -0.919535764538
+\end{euleroutput}
+\begin{eulercomment}
+Note that expression will always use global variables, even if there is a
+variable in a function with the same name. (Otherwise the evaluation of
+expressions in functions could have very confusing results for the user that
+called the function.)
+\end{eulercomment}
+\begin{eulerprompt}
+>at:=4; function f(expr,x,at) := expr(x); ...
+>f("at*x^2",3,5) // computes 4*3^2 not 5*3^2
+\end{eulerprompt}
+\begin{euleroutput}
+  36
+\end{euleroutput}
+\begin{eulercomment}
+If you want to use another value for "at" than the global value you need to
+add "at=value".
+\end{eulercomment}
+\begin{eulerprompt}
+>at:=4; function f(expr,x,a) := expr(x,at=a); ...
+>f("at*x^2",3,5)
+\end{eulerprompt}
+\begin{euleroutput}
+  45
+\end{euleroutput}
+\begin{eulercomment}
+For reference, we remark that call collections (discussed elsewhere) can
+contain expressions. So we can make the above example as follows.
+\end{eulercomment}
+\begin{eulerprompt}
+>at:=4; function f(expr,x) := expr(x); ...
+>f(\{\{"at*x^2",at=5\}\},3)
+\end{eulerprompt}
+\begin{euleroutput}
+  45
+\end{euleroutput}
+\begin{eulercomment}
+Expressions in x are often used just like functions.\\
+Note that defining a function with the same name like a global symbolic
+expression deletes this variable to avoid confusion between symbolic
+expressions and functions.
+\end{eulercomment}
+\begin{eulerprompt}
+>f &= 5*x;
+>function f(x) := 6*x;
+>f(2)
+\end{eulerprompt}
+\begin{euleroutput}
+  12
+\end{euleroutput}
+\begin{eulercomment}
+By way of convention, symbolic or numerical expressions should be named fx,
+fxy etc. This naming scheme should not be used for functions.
+\end{eulercomment}
+\begin{eulerprompt}
+>fx &= diff(x^x,x); $&fx
+\end{eulerprompt}
+\begin{eulercomment}
+A special form of an expression allows any variable as an unnamed parameter
+to the evaluation of the expression, not just "x", "y" etc. For this, start
+the expression with "@(variables) ...".
+\end{eulercomment}
+\begin{eulerprompt}
+>"@(a,b) a^2+b^2", %(4,5)
+\end{eulerprompt}
+\begin{euleroutput}
+  @(a,b) a^2+b^2
+  41
+\end{euleroutput}
+\begin{eulercomment}
+This allows to manipulate expressions in other variables for functions of EMT
+which need an expression in "x".
+
+The most elementary way to define a simple function is to store its formula
+in a symbolic or numerical expression. If the main variable is x, the
+expression can be evaluated just like a function.
+
+As you see in the following example, global variables are visible during the
+evaluation.
+\end{eulercomment}
+\begin{eulerprompt}
+>fx &= x^3-a*x;  ...
+>a=1.2; fx(0.5)
+\end{eulerprompt}
+\begin{euleroutput}
+  -0.475
+\end{euleroutput}
+\begin{eulercomment}
+All other variables in the expression can be specified in the evaluation
+using an assigned parameter.
+\end{eulercomment}
+\begin{eulerprompt}
+>fx(0.5,a=1.1)
+\end{eulerprompt}
+\begin{euleroutput}
+  -0.425
+\end{euleroutput}
+\begin{eulercomment}
+An expression needs not be symbolic. This is necessary, if the expression
+contains functions, which are only known in the numerical kernel, not in
+Maxima.
+
+\begin{eulercomment}
+\eulerheading{Symbolic Mathematics}
+\begin{eulercomment}
+EMT does symbolic math with the help of Maxima. For details, start with the
+following tutorial, or browse the reference for Maxima. Experts in Maxima
+should note that there are differences in the syntax between the original
+syntax of Maxima and the default syntax of symbolic expressions in EMT.
+
+Symbolic math is integrated seamlessly into Euler with \&. Any expression
+starting with \& is a symbolic expression. It is evaluated and printed by
+Maxima.
+
+First of all, Maxima has an "infinite" arithmetic which can handle
+very large numbers.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&44!
+\end{eulerprompt}
+\begin{eulercomment}
+This way, you can compute large results exactly. Let us compute
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+C(44,10) = \frac{44!}{34! \cdot 10!}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$& 44!/(34!*10!) // nilai C(44,10)
+\end{eulerprompt}
+\begin{eulercomment}
+Of course, Maxima has a more efficient function for this (as does the
+numerical part of EMT).
+\end{eulercomment}
+\begin{eulerprompt}
+>$binomial(44,10) //menghitung C(44,10) menggunakan fungsi binomial()
+\end{eulerprompt}
+\begin{eulercomment}
+To learn more about a specific function double click on it. E.g., try double clicking
+on "\&binomial" in the previous command line. This opens the documentation of Maxima as
+provided by the authors of that program.
+
+You will learn that the following works too.
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+C(x,3)=\frac{x!}{(x-3)!3!}=\frac{(x-2)(x-1)x}{6}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$binomial(x,3) // C(x,3)
+\end{eulerprompt}
+\begin{eulercomment}
+If you want to replace x with any specific value use "with".
+\end{eulercomment}
+\begin{eulerprompt}
+>$&binomial(x,3) with x=10 // substitusi x=10 ke C(x,3)
+\end{eulerprompt}
+\begin{eulercomment}
+That way you can use a solution of an equation in another equation.
+
+Symbolic expressions are printed by Maxima in 2D form. The reason for this is a special
+symbolic flag in the string.
+
+As you will have seen in previous and following examples, if you have LaTeX installed,
+you can print a symbolic expression with Latex. If not, the following command will
+issue an error message.
+
+To print a symbolic expression with LaTeX, use \textdollar{} infront of \& (or you may ommit \&)
+before the command. Do not run the Maxima commands with \textdollar{}, if you don't have LaTeX
+installed.
+\end{eulercomment}
+\begin{eulerprompt}
+>$(3+x)/(x^2+1)
+\end{eulerprompt}
+\begin{eulercomment}
+Symbolic expressions are parsed by Euler. If you need a complex syntax in one
+expression, you can enclose the expression in "...". To use more than a
+simple expression is possible, but strongly discouraged.
+\end{eulercomment}
+\begin{eulerprompt}
+>&"v := 5; v^2"
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                                    25
+  
+\end{euleroutput}
+\begin{eulercomment}
+For completeness, we remark that symbolic expressions can be used in
+programs, but need to be enclosed in quotes. Moreover, it is much more
+effective to call Maxima at compile time if possible.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&expand((1+x)^4), $&factor(diff(%,x)) // diff: turunan, factor: faktor
+\end{eulerprompt}
+\begin{eulercomment}
+Again, \% refers to the previous result.
+
+To make things easier we save the solution to a symbolic variable.
+Symbolic variables are defined with "\&=".
+\end{eulercomment}
+\begin{eulerprompt}
+>fx &= (x+1)/(x^4+1); $&fx
+\end{eulerprompt}
+\begin{eulercomment}
+Symbolic expressions can be used in other symbolic expressions.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&factor(diff(fx,x))
+\end{eulerprompt}
+\begin{eulercomment}
+A direct input of Maxima commands is available too. Start the command line
+with "::". The syntax of Maxima is adapted to the syntax of EMT (called the
+"compatibility mode").
+\end{eulercomment}
+\begin{eulerprompt}
+>&factor(20!)
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                           2432902008176640000
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>::: factor(10!)
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                                 8  4  2
+                                2  3  5  7
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>:: factor(20!)
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                          18  8  4  2
+                         2   3  5  7  11 13 17 19
+  
+\end{euleroutput}
+\begin{eulercomment}
+If you are an expert in Maxima, you may wish to use the original syntax of
+Maxima. You can do this with ":::".
+\end{eulercomment}
+\begin{eulerprompt}
+>::: av:g$ av^2;
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                                     2
+                                    g
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>fx &= x^3*exp(x), $fx
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                                   3  x
+                                  x  E
+  
+\end{euleroutput}
+\begin{eulercomment}
+Such variables can be used in other symbolic expressions. Note, that in the
+following command the right hand side of \&= is evaluated before the
+assignment to Fx.
+\end{eulercomment}
+\begin{eulerprompt}
+>&(fx with x=5), $%, &float(%)
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                                       5
+                                  125 E
+  
+  
+                            18551.64488782208
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>fx(5)
+\end{eulerprompt}
+\begin{euleroutput}
+  18551.6448878
+\end{euleroutput}
+\begin{eulercomment}
+For the evaluation of an expression with specific values of the variables,
+you can use the "with" operator.
+
+The following command line also demonstrates that Maxima can evaluate an
+expression numerically with float().
+\end{eulercomment}
+\begin{eulerprompt}
+>&(fx with x=10)-(fx with x=5), &float(%)
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                                  10        5
+                            1000 E   - 125 E
+  
+  
+                           2.20079141499189e+7
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>$factor(diff(fx,x,2))
+\end{eulerprompt}
+\begin{eulercomment}
+To get the Latex code for an expression, you can use the tex command.
+\end{eulercomment}
+\begin{eulerprompt}
+>tex(fx)
+\end{eulerprompt}
+\begin{euleroutput}
+  x^3\(\backslash\),e^\{x\}
+\end{euleroutput}
+\begin{eulercomment}
+Symbolic expressions can be evaluated just like numerical expressions.
+\end{eulercomment}
+\begin{eulerprompt}
+>fx(0.5)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.206090158838
+\end{euleroutput}
+\begin{eulercomment}
+In symbolic expressions, this does not work, since Maxima does not support
+it. Instead, use the "with" syntax (a nicer form of the at(...) command of
+Maxima).
+\end{eulercomment}
+\begin{eulerprompt}
+>$&fx with x=1/2
+\end{eulerprompt}
+\begin{eulercomment}
+The assignment can also be symbolic.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&fx with x=1+t
+\end{eulerprompt}
+\begin{eulercomment}
+The command solve solves symbolic expressions for a variable in Maxima. The
+result is a vector of solutions.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&solve(x^2+x=4,x)
+\end{eulerprompt}
+\begin{eulercomment}
+Compare with the numerical "solve" command in Euler, which needs a start
+value, and optionally a target value.
+\end{eulercomment}
+\begin{eulerprompt}
+>solve("x^2+x",1,y=4)
+\end{eulerprompt}
+\begin{euleroutput}
+  1.56155281281
+\end{euleroutput}
+\begin{eulercomment}
+The numerical values of the symbolic solution can be computed by evaluation
+of the symbolic result. Euler will read over the assignments x= etc. If you
+do not need the numerical results for further computations you can also let
+Maxima find the numerical values.
+\end{eulercomment}
+\begin{eulerprompt}
+>sol &= solve(x^2+2*x=4,x); $&sol, sol(), $&float(sol)
+\end{eulerprompt}
+\begin{euleroutput}
+  [-3.23607,  1.23607]
+\end{euleroutput}
+\begin{eulercomment}
+To get a specific symbolic solution, one can use "with" and an index.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&solve(x^2+x=1,x), x2 &= x with %[2]; $&x2
+\end{eulerprompt}
+\begin{eulercomment}
+To solve a system of equations, use a vector of equations. The result is a
+vector of solutions.
+\end{eulercomment}
+\begin{eulerprompt}
+>sol &= solve([x+y=3,x^2+y^2=5],[x,y]); $&sol, $&x*y with sol[1]
+\end{eulerprompt}
+\begin{eulercomment}
+Symbolic expressions can have flags, which indicate a special treatment in
+Maxima. Some flags can be used as commands too, others can't. Flags are
+appended with "\textbar{}" (a nicer form of "ev(...,flags)")
+\end{eulercomment}
+\begin{eulerprompt}
+>$& diff((x^3-1)/(x+1),x) //turunan bentuk pecahan
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\frac{1-x^3}{\left(1+x\right)^2}+\frac{3\,x^2}{1+x}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$& diff((x^3-1)/(x+1),x) | ratsimp //menyederhanakan pecahan
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\frac{1+3\,x^2+2\,x^3}{1+2\,x+x^2}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&factor(%)
+\end{eulerprompt}
+\eulerheading{Functions}
+\begin{eulercomment}
+In EMT, functions are programs defined with the command "function". It can be a
+one-line function or multiline function.\\
+A one-line function can be numerical or symbolic. A numerical one-line function is
+defined by ":=".
+\end{eulercomment}
+\begin{eulerprompt}
+>function f(x) := x*sqrt(x^2+1)
+\end{eulerprompt}
+\begin{eulercomment}
+For an overview, we show all possible definitions for one-line functions. A
+function can be evaluated just like any built-in Euler function.
+\end{eulercomment}
+\begin{eulerprompt}
+>f(2)
+\end{eulerprompt}
+\begin{euleroutput}
+  4.472135955
+\end{euleroutput}
+\begin{eulercomment}
+This function will work for vectors too, obeying the matrix language of
+Euler, since the expressions used in the function are vectorized.
+\end{eulercomment}
+\begin{eulerprompt}
+>f(0:0.1:1)
+\end{eulerprompt}
+\begin{euleroutput}
+  [0,  0.100499,  0.203961,  0.313209,  0.430813,  0.559017,  0.699714,
+  0.854459,  1.0245,  1.21083,  1.41421]
+\end{euleroutput}
+\begin{eulercomment}
+Functions can be plotted. Instead of expressions, we need only provide the
+function name.
+
+In contrast to symbolic or numerical expressions, the function name must be
+provided in a string.
+\end{eulercomment}
+\begin{eulerprompt}
+>solve("f",1,y=1)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.786151377757
+\end{euleroutput}
+\begin{eulercomment}
+By default, if you need to overwrite a built-in function, you must add the
+keyword "overwrite". Overwriting built-in functions is dangerous and can
+cause problems for other functions depending on them.
+
+You can still call the built-in function as "\_...", if it is function in the
+Euler core.
+\end{eulercomment}
+\begin{eulerprompt}
+>function overwrite sin (x) := _sin(x°) // redine sine in degrees
+>sin(45)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.707106781187
+\end{euleroutput}
+\begin{eulercomment}
+We better remove this redefinition of sin.
+\end{eulercomment}
+\begin{eulerprompt}
+>forget sin; sin(pi/4)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.707106781187
+\end{euleroutput}
+\eulersubheading{Default Parameters}
+\begin{eulercomment}
+Numerical function can have default parameters.
+\end{eulercomment}
+\begin{eulerprompt}
+>function f(x,a=1) := a*x^2
+\end{eulerprompt}
+\begin{eulercomment}
+Omitting this parameter uses the default value.
+\end{eulercomment}
+\begin{eulerprompt}
+>f(4)
+\end{eulerprompt}
+\begin{euleroutput}
+  16
+\end{euleroutput}
+\begin{eulercomment}
+Setting it overwrites the default value.
+\end{eulercomment}
+\begin{eulerprompt}
+>f(4,5)
+\end{eulerprompt}
+\begin{euleroutput}
+  80
+\end{euleroutput}
+\begin{eulercomment}
+An assigned parameter overwrite it too. This is used by many Euler functions
+like plot2d, plot3d.
+\end{eulercomment}
+\begin{eulerprompt}
+>f(4,a=1)
+\end{eulerprompt}
+\begin{euleroutput}
+  16
+\end{euleroutput}
+\begin{eulercomment}
+If a variable is not a parameter, it must be global. One-line functions can
+see global variables.
+\end{eulercomment}
+\begin{eulerprompt}
+>function f(x) := a*x^2
+>a=6; f(2)
+\end{eulerprompt}
+\begin{euleroutput}
+  24
+\end{euleroutput}
+\begin{eulercomment}
+But an assigned parameter overrides the global value.
+
+If the argument is not in the list of pre-defined parameters, it must be
+declared with ":="!
+\end{eulercomment}
+\begin{eulerprompt}
+>f(2,a:=5)
+\end{eulerprompt}
+\begin{euleroutput}
+  20
+\end{euleroutput}
+\begin{eulercomment}
+Symbolic functions are defined with "\&=". They are defined in Euler and
+Maxima, and work in both worlds. The defining expression is run through
+Maxima before the definition.
+\end{eulercomment}
+\begin{eulerprompt}
+>function g(x) &= x^3-x*exp(-x); $&g(x)
+\end{eulerprompt}
+\begin{eulercomment}
+Symbolic functions can be used in symbolic expressions.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&diff(g(x),x), $&% with x=4/3
+\end{eulerprompt}
+\begin{eulercomment}
+They can also be used in numerical expressions. Of course, this will only
+work if EMT can interpret everything inside the function.
+\end{eulercomment}
+\begin{eulerprompt}
+>g(5+g(1))
+\end{eulerprompt}
+\begin{euleroutput}
+  178.635099908
+\end{euleroutput}
+\begin{eulercomment}
+They can be used to define other symbolic functions or expressions.
+\end{eulercomment}
+\begin{eulerprompt}
+>function G(x) &= factor(integrate(g(x),x)); $&G(c) // integrate: mengintegralkan
+>solve(&g(x),0.5)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.703467422498
+\end{euleroutput}
+\begin{eulercomment}
+The following works too, since Euler uses the symbolic expression in the
+function g, if it does not find a symbolic variable g, and if there is a
+symbolic function g.
+\end{eulercomment}
+\begin{eulerprompt}
+>solve(&g,0.5)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.703467422498
+\end{euleroutput}
+\begin{eulerprompt}
+>function P(x,n) &= (2*x-1)^n; $&P(x,n)
+>function Q(x,n) &= (x+2)^n; $&Q(x,n)
+>$&P(x,4), $&expand(%)
+>P(3,4)
+\end{eulerprompt}
+\begin{euleroutput}
+  625
+\end{euleroutput}
+\begin{eulerprompt}
+>$&P(x,4)+ Q(x,3), $&expand(%)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+Q\left(x , 3\right)+P\left(x , 4\right)
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+Q\left(x , 3\right)+P\left(x , 4\right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&P(x,4)-Q(x,3), $&expand(%), $&factor(%)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+-Q\left(x , 3\right)+P\left(x , 4\right)
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+-Q\left(x , 3\right)+P\left(x , 4\right)
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+-Q\left(x , 3\right)+P\left(x , 4\right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&P(x,4)*Q(x,3), $&expand(%), $&factor(%)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+Q\left(x , 3\right)\,P\left(x , 4\right)
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+Q\left(x , 3\right)\,P\left(x , 4\right)
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+Q\left(x , 3\right)\,P\left(x , 4\right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&P(x,4)/Q(x,1), $&expand(%), $&factor(%)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\frac{P\left(x , 4\right)}{Q\left(x , 1\right)}
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+\frac{P\left(x , 4\right)}{Q\left(x , 1\right)}
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+\frac{P\left(x , 4\right)}{Q\left(x , 1\right)}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>function f(x) &= x^3-x; $&f(x)
+\end{eulerprompt}
+\begin{eulercomment}
+With \&= the function is symbolic, and can be used in other symbolic
+expressions.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&integrate(f(x),x)
+\end{eulerprompt}
+\begin{eulercomment}
+With := the function is numerical. A good example is a definite integral like
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x) = \int_1^x t^t \, dt,
+\]
+\end{eulerformula}
+\begin{eulercomment}
+which can not be evaluated symbolically.
+
+If we redefine the function with the keyword "map" it can be used for vectors
+x. Internally, the function is called for all values of x once, and the
+results are stored in a vector.
+\end{eulercomment}
+\begin{eulerprompt}
+>function map f(x) := integrate("x^x",1,x)
+>f(0:0.5:2)
+\end{eulerprompt}
+\begin{euleroutput}
+  [-0.783431,  -0.410816,  0,  0.676863,  2.05045]
+\end{euleroutput}
+\begin{eulercomment}
+Functions can have default values for parameters.
+\end{eulercomment}
+\begin{eulerprompt}
+>function mylog (x,base=10) := ln(x)/ln(base);
+\end{eulerprompt}
+\begin{eulercomment}
+Now the function can be called with or without a parameter "base".
+\end{eulercomment}
+\begin{eulerprompt}
+>mylog(100), mylog(2^6.7,2)
+\end{eulerprompt}
+\begin{euleroutput}
+  2
+  6.7
+\end{euleroutput}
+\begin{eulercomment}
+Moreover, it is possible to use assigned parameters.
+\end{eulercomment}
+\begin{eulerprompt}
+>mylog(E^2,base=E)
+\end{eulerprompt}
+\begin{euleroutput}
+  2
+\end{euleroutput}
+\begin{eulercomment}
+Often, we want to use functions for vectors at one place, and for individual
+elements at other places. This is possible with vector parameters.
+\end{eulercomment}
+\begin{eulerprompt}
+>function f([a,b]) &= a^2+b^2-a*b+b; $&f(a,b), $&f(x,y)
+\end{eulerprompt}
+\begin{eulercomment}
+Such a symbolic function can be used for symbolic variables.
+
+But the function can also be used for a numerical vector.
+\end{eulercomment}
+\begin{eulerprompt}
+>v=[3,4]; f(v)
+\end{eulerprompt}
+\begin{euleroutput}
+  17
+\end{euleroutput}
+\begin{eulercomment}
+There are also purely symbolic functions, which cannot be used numerically.
+\end{eulercomment}
+\begin{eulerprompt}
+>function lapl(expr,x,y) &&= diff(expr,x,2)+diff(expr,y,2)//turunan parsial kedua
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                   diff(expr, y, 2) + diff(expr, x, 2)
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>$&realpart((x+I*y)^4), $&lapl(%,x,y)
+\end{eulerprompt}
+\begin{eulercomment}
+But of course, they can be used in symbolic expressions or in the definition
+of symbolic functions.
+\end{eulercomment}
+\begin{eulerprompt}
+>function f(x,y) &= factor(lapl((x+y^2)^5,x,y)); $&f(x,y)
+\end{eulerprompt}
+\begin{eulercomment}
+To summarize
+
+- \&= defines symbolic functions,\\
+- := defines numerical functions,\\
+- \&\&= defines purely symbolic functions.
+
+\begin{eulercomment}
+\eulerheading{Solving Expressions}
+\begin{eulercomment}
+Expressions can be solved numerically and symbolically.
+
+To solve a simple expression of one variable, we can use the solve()
+function. It needs a start value to start the search. Internally,
+solve() uses the secant method.
+\end{eulercomment}
+\begin{eulerprompt}
+>solve("x^2-2",1)
+\end{eulerprompt}
+\begin{euleroutput}
+  1.41421356237
+\end{euleroutput}
+\begin{eulercomment}
+This works for symbolic expression too. Take the following function.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&solve(x^2=2,x)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=-\sqrt{2} , x=\sqrt{2} \right] 
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&solve(x^2-2,x)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=-\sqrt{2} , x=\sqrt{2} \right] 
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&solve(a*x^2+b*x+c=0,x)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=\frac{-b-\sqrt{b^2-4\,a\,c}}{2\,a} , x=\frac{-b+\sqrt{b^2-
+ 4\,a\,c}}{2\,a} \right] 
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&solve([a*x+b*y=c,d*x+e*y=f],[x,y])
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ \left[ x=\frac{-c\,e+b\,f}{b\,d-a\,e} , y=\frac{c\,d-a\,f}{b
+ \,d-a\,e} \right]  \right] 
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>px &= 4*x^8+x^7-x^4-x; $&px
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+-x-x^4+x^7+4\,x^8
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Now we search the point, where the polynomial is 2. In solve(), the default
+target value y=0 can be changed with an assigned variable.\\
+We use y=2 and check by evaluating the polynomial at the previous result.
+\end{eulercomment}
+\begin{eulerprompt}
+>solve(px,1,y=2), px(%)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.966715594851
+  2
+\end{euleroutput}
+\begin{eulercomment}
+Solving a symbolic expression in symbolic form returns a list of solutions.
+We use the symbolic solver solve() provided by Maxima.
+\end{eulercomment}
+\begin{eulerprompt}
+>sol &= solve(x^2-x-1,x); $&sol
+\end{eulerprompt}
+\begin{eulercomment}
+The easiest way to get the numerical values is to evaluate the solution
+numerically just like an expression.
+\end{eulercomment}
+\begin{eulerprompt}
+>longest sol()
+\end{eulerprompt}
+\begin{euleroutput}
+      -0.6180339887498949       1.618033988749895 
+\end{euleroutput}
+\begin{eulercomment}
+To use the solutions symbolically in other expressions, the easiest way is
+"with".
+\end{eulercomment}
+\begin{eulerprompt}
+>$&x^2 with sol[1], $&expand(x^2-x-1 with sol[2])
+\end{eulerprompt}
+\begin{eulercomment}
+Solving systems of equations symbolically can be done with vectors of
+equations and the symbolic solver solve(). The answer is a list of lists of
+equations.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&solve([x+y=2,x^3+2*y+x=4],[x,y])
+\end{eulerprompt}
+\begin{eulercomment}
+The function f() can see global variables. But often we want to use
+local parameters.
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+a^x-x^a = 0.1
+\]
+\end{eulerformula}
+\begin{eulercomment}
+with a=3.
+\end{eulercomment}
+\begin{eulerprompt}
+>function f(x,a) := x^a-a^x;
+\end{eulerprompt}
+\begin{eulercomment}
+One way to pass the additional parameter to f() is to use a list with the
+function name and the parameters (the other way are semicolon parameters).
+\end{eulercomment}
+\begin{eulerprompt}
+>solve(\{\{"f",3\}\},2,y=0.1)
+\end{eulerprompt}
+\begin{euleroutput}
+  2.54116291558
+\end{euleroutput}
+\begin{eulercomment}
+This does also work with expressions. But then, a named list element has to
+be used. (More on lists in the tutorial about the syntax of EMT).
+\end{eulercomment}
+\begin{eulerprompt}
+>solve(\{\{"x^a-a^x",a=3\}\},2,y=0.1)
+\end{eulerprompt}
+\begin{euleroutput}
+  2.54116291558
+\end{euleroutput}
+\eulerheading{Menyelesaikan Pertidaksamaan}
+\begin{eulercomment}
+Untuk menyelesaikan pertidaksamaan, EMT tidak akan dapat melakukannya,
+melainkan dengan bantuan Maxima, artinya secara eksak (simbolik).
+Perintah Maxima yang digunakan adalah fourier\_elim(), yang harus
+dipanggil dengan perintah "load(fourier\_elim)" terlebih dahulu.
+\end{eulercomment}
+\begin{eulerprompt}
+>&load(fourier_elim)
+\end{eulerprompt}
+\begin{euleroutput}
+  
+          C:/Program Files/Euler x64/maxima/share/maxima/5.35.1/share/f\(\backslash\)
+  ourier_elim/fourier_elim.lisp
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>$&fourier_elim([x^2 - 1>0],[x]) // x^2-1 > 0
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left[ x^2-1>0 \right]  , \left[ x   \right] \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&fourier_elim([x^2 - 1<0],[x]) // x^2-1 < 0
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left[ -1+x^2<0 \right]  , \left[ x
+  \right] \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&fourier_elim([x^2 - 1 # 0],[x]) // x^-1 <> 0
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left[ -1+x^2\neq 0 \right]  , \left[ x
+  \right] \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&fourier_elim([x # 6],[x])
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left[ x\neq 6 \right]  , \left[ x
+  \right] \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&fourier_elim([x < 1, x > 1],[x]) // tidak memiliki penyelesaian
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left[ x<1 , x>1 \right]  , \left[ x
+  \right] \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&fourier_elim([minf < x, x < inf],[x]) // solusinya R
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left[  -\infty <x , x<\infty  \right] 
+  , \left[ x \right] \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&fourier_elim([x^3 - 1 > 0],[x])
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left[ -1+x^3>0 \right]  , \left[ x
+  \right] \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&fourier_elim([cos(x) < 1/2],[x]) // ??? gagal
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left[ \cos x<\frac{1}{2} \right]  , 
+ \left[ x \right] \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&fourier_elim([y-x < 5, x - y < 7, 10 < y],[x,y]) // sistem pertidaksamaan
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left[ -x+y<5 , x-y<7 , 10<y \right]  , 
+ \left[ x , y \right] \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&fourier_elim([y-x < 5, x - y < 7, 10 < y],[y,x])
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left[ -x+y<5 , x-y<7 , 10<y \right]  , 
+ \left[ y , x \right] \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&fourier_elim((x + y < 5) and (x - y >8),[x,y])
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(x+y<5\land x-y>8 , \left[ x , y \right] 
+ \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&fourier_elim(((x + y < 5) and x < 1) or  (x - y >8),[x,y])
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(x+y<5\land x<1\lor x-y>8 , \left[ x , y
+  \right] \right)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>&fourier_elim([max(x,y) > 6, x # 8, abs(y-1) > 12],[x,y])
+\end{eulerprompt}
+\begin{euleroutput}
+  
+          [6 < x, x < 8, y < - 11] or [8 < x, y < - 11]
+   or [x < 8, 13 < y] or [x = y, 13 < y] or [8 < x, x < y, 13 < y]
+   or [y < x, 13 < y]
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>$&fourier_elim([(x+6)/(x-9) <= 6],[x])
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left[ \frac{6+x}{-9+x}\leq 6 \right] 
+  , \left[ x \right] \right)
+\]
+\end{eulerformula}
+\eulerheading{The Matrix Language}
+\begin{eulercomment}
+The documentation of the EMT core contains a detailed discussion on the
+matrix language of Euler.
+
+Vectors and matrices are entered with square brackets, elements separated by
+commas, rows separated by semicolons.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=[1,2;3,4]
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2 
+              3             4 
+\end{euleroutput}
+\begin{eulercomment}
+The matrix product is denoted by a dot.
+\end{eulercomment}
+\begin{eulerprompt}
+>b=[3;4]
+\end{eulerprompt}
+\begin{euleroutput}
+              3 
+              4 
+\end{euleroutput}
+\begin{eulerprompt}
+>b' // transpose b
+\end{eulerprompt}
+\begin{euleroutput}
+  [3,  4]
+\end{euleroutput}
+\begin{eulerprompt}
+>inv(A) //inverse A
+\end{eulerprompt}
+\begin{euleroutput}
+             -2             1 
+            1.5          -0.5 
+\end{euleroutput}
+\begin{eulerprompt}
+>A.b //perkalian matriks
+\end{eulerprompt}
+\begin{euleroutput}
+             11 
+             25 
+\end{euleroutput}
+\begin{eulerprompt}
+>A.inv(A)
+\end{eulerprompt}
+\begin{euleroutput}
+              1             0 
+              0             1 
+\end{euleroutput}
+\begin{eulercomment}
+The main point of a matrix language is that all functions and operators work
+element for element.
+\end{eulercomment}
+\begin{eulerprompt}
+>A.A
+\end{eulerprompt}
+\begin{euleroutput}
+              7            10 
+             15            22 
+\end{euleroutput}
+\begin{eulerprompt}
+>A^2 //perpangkatan elemen2 A
+\end{eulerprompt}
+\begin{euleroutput}
+              1             4 
+              9            16 
+\end{euleroutput}
+\begin{eulerprompt}
+>A.A.A
+\end{eulerprompt}
+\begin{euleroutput}
+             37            54 
+             81           118 
+\end{euleroutput}
+\begin{eulerprompt}
+>power(A,3) //perpangkatan matriks
+\end{eulerprompt}
+\begin{euleroutput}
+             37            54 
+             81           118 
+\end{euleroutput}
+\begin{eulerprompt}
+>A/A //pembagian elemen-elemen matriks yang seletak
+\end{eulerprompt}
+\begin{euleroutput}
+              1             1 
+              1             1 
+\end{euleroutput}
+\begin{eulerprompt}
+>A/b //pembagian elemen2 A oleh elemen2 b kolom demi kolom (karena b vektor kolom)
+\end{eulerprompt}
+\begin{euleroutput}
+       0.333333      0.666667 
+           0.75             1 
+\end{euleroutput}
+\begin{eulerprompt}
+>A\(\backslash\)b // hasilkali invers A dan b, A^(-1)b 
+\end{eulerprompt}
+\begin{euleroutput}
+             -2 
+            2.5 
+\end{euleroutput}
+\begin{eulerprompt}
+>inv(A).b
+\end{eulerprompt}
+\begin{euleroutput}
+             -2 
+            2.5 
+\end{euleroutput}
+\begin{eulerprompt}
+>A\(\backslash\)A   //A^(-1)A
+\end{eulerprompt}
+\begin{euleroutput}
+              1             0 
+              0             1 
+\end{euleroutput}
+\begin{eulerprompt}
+>inv(A).A
+\end{eulerprompt}
+\begin{euleroutput}
+              1             0 
+              0             1 
+\end{euleroutput}
+\begin{eulerprompt}
+>A*A //perkalin elemen-elemen matriks seletak
+\end{eulerprompt}
+\begin{euleroutput}
+              1             4 
+              9            16 
+\end{euleroutput}
+\begin{eulercomment}
+This is not the matrix product, but a multiplication element by element. The
+same works for vectors.
+\end{eulercomment}
+\begin{eulerprompt}
+>b^2 // perpangkatan elemen-elemen matriks/vektor
+\end{eulerprompt}
+\begin{euleroutput}
+              9 
+             16 
+\end{euleroutput}
+\begin{eulercomment}
+If one of the operands is a vector or a scalar it is expanded in the
+natural way.
+\end{eulercomment}
+\begin{eulerprompt}
+>2*A
+\end{eulerprompt}
+\begin{euleroutput}
+              2             4 
+              6             8 
+\end{euleroutput}
+\begin{eulercomment}
+E.g., if the operand is a column vector its elements are applied to
+all rows of A.
+\end{eulercomment}
+\begin{eulerprompt}
+>[1,2]*A
+\end{eulerprompt}
+\begin{euleroutput}
+              1             4 
+              3             8 
+\end{euleroutput}
+\begin{eulercomment}
+If it is a row vector it is applied to all columns of A.
+\end{eulercomment}
+\begin{eulerprompt}
+>A*[2,3]
+\end{eulerprompt}
+\begin{euleroutput}
+              2             6 
+              6            12 
+\end{euleroutput}
+\begin{eulercomment}
+One can imagine this multiplication as if the row vector v had been
+duplicated to form a matrix of the same size as A.
+\end{eulercomment}
+\begin{eulerprompt}
+>dup([1,2],2) // dup: menduplikasi/menggandakan vektor [1,2] sebanyak 2 kali (baris)
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2 
+              1             2 
+\end{euleroutput}
+\begin{eulerprompt}
+>A*dup([1,2],2) 
+\end{eulerprompt}
+\begin{euleroutput}
+              1             4 
+              3             8 
+\end{euleroutput}
+\begin{eulercomment}
+This does also apply for two vectors where one is a row vector and the
+other is a column vector. We compute i*j for i,j from 1 to 5. The trick is to multiply 1:5
+with its transpose. The matrix language of Euler automatically
+generates a table of values.
+\end{eulercomment}
+\begin{eulerprompt}
+>(1:5)*(1:5)' // hasilkali elemen-elemen vektor baris dan vektor kolom
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2             3             4             5 
+              2             4             6             8            10 
+              3             6             9            12            15 
+              4             8            12            16            20 
+              5            10            15            20            25 
+\end{euleroutput}
+\begin{eulercomment}
+Again, remember that this is not the matrix product!
+\end{eulercomment}
+\begin{eulerprompt}
+>(1:5).(1:5)' // hasilkali vektor baris dan vektor kolom
+\end{eulerprompt}
+\begin{euleroutput}
+  55
+\end{euleroutput}
+\begin{eulerprompt}
+>sum((1:5)*(1:5)) // sama hasilnya
+\end{eulerprompt}
+\begin{euleroutput}
+  55
+\end{euleroutput}
+\begin{eulercomment}
+Even operators like \textless{} or == work in the same way.
+\end{eulercomment}
+\begin{eulerprompt}
+>(1:10)<6 // menguji elemen-elemen yang kurang dari 6
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  1,  1,  1,  1,  0,  0,  0,  0,  0]
+\end{euleroutput}
+\begin{eulercomment}
+E.g., we can count the number of elements satisfying a certain
+condition with the function sum().
+\end{eulercomment}
+\begin{eulerprompt}
+>sum((1:10)<6) // banyak elemen yang kurang dari 6
+\end{eulerprompt}
+\begin{euleroutput}
+  5
+\end{euleroutput}
+\begin{eulercomment}
+Euler has comparison operators, like "==", which checks for equality.
+
+We get a vector of 0 and 1, where 1 stands for true.
+\end{eulercomment}
+\begin{eulerprompt}
+>t=(1:10)^2; t==25 //menguji elemen2 t yang sama dengan 25 (hanya ada 1)
+\end{eulerprompt}
+\begin{euleroutput}
+  [0,  0,  0,  0,  1,  0,  0,  0,  0,  0]
+\end{euleroutput}
+\begin{eulercomment}
+From such a vector, "nonzeros" selects the non-zero elements.
+
+In this case, we get the indices of all elements greater than 50.
+\end{eulercomment}
+\begin{eulerprompt}
+>nonzeros(t>50) //indeks elemen2 t yang lebih besar daripada 50
+\end{eulerprompt}
+\begin{euleroutput}
+  [8,  9,  10]
+\end{euleroutput}
+\begin{eulercomment}
+Of course, we can use this vector of indices to get the corresponding
+values in t.
+\end{eulercomment}
+\begin{eulerprompt}
+>t[nonzeros(t>50)] //elemen2 t yang lebih besar daripada 50
+\end{eulerprompt}
+\begin{euleroutput}
+  [64,  81,  100]
+\end{euleroutput}
+\begin{eulercomment}
+As an example, let us find all squares of the numbers 1 to 1000, which
+are 5 modulo 11 and 3 modulo 13.
+\end{eulercomment}
+\begin{eulerprompt}
+>t=1:1000; nonzeros(mod(t^2,11)==5 && mod(t^2,13)==3)
+\end{eulerprompt}
+\begin{euleroutput}
+  [4,  48,  95,  139,  147,  191,  238,  282,  290,  334,  381,  425,
+  433,  477,  524,  568,  576,  620,  667,  711,  719,  763,  810,  854,
+  862,  906,  953,  997]
+\end{euleroutput}
+\begin{eulercomment}
+EMT is not completely effective for integer computations. It uses
+double precision floating point internally. However, it is often very
+useful.
+
+We can check for primality. Let us find out, how many squares plus 1
+are primes.
+\end{eulercomment}
+\begin{eulerprompt}
+>t=1:1000; length(nonzeros(isprime(t^2+1)))
+\end{eulerprompt}
+\begin{euleroutput}
+  112
+\end{euleroutput}
+\begin{eulercomment}
+The function nonzeros() works only for vectors. For matrices, there is
+mnonzeros().
+\end{eulercomment}
+\begin{eulerprompt}
+>seed(2); A=random(3,4)
+\end{eulerprompt}
+\begin{euleroutput}
+       0.765761      0.401188      0.406347      0.267829 
+        0.13673      0.390567      0.495975      0.952814 
+       0.548138      0.006085      0.444255      0.539246 
+\end{euleroutput}
+\begin{eulercomment}
+It returns the indices of the elements, which are not zeros.
+\end{eulercomment}
+\begin{eulerprompt}
+>k=mnonzeros(A<0.4) //indeks elemen2 A yang kurang dari 0,4
+\end{eulerprompt}
+\begin{euleroutput}
+              1             4 
+              2             1 
+              2             2 
+              3             2 
+\end{euleroutput}
+\begin{eulercomment}
+These indices can be used to set the elements to some value.
+\end{eulercomment}
+\begin{eulerprompt}
+>mset(A,k,0) //mengganti elemen2 suatu matriks pada indeks tertentu
+\end{eulerprompt}
+\begin{euleroutput}
+       0.765761      0.401188      0.406347             0 
+              0             0      0.495975      0.952814 
+       0.548138             0      0.444255      0.539246 
+\end{euleroutput}
+\begin{eulercomment}
+The function mset() can also set the elements at the indices to the
+entries of some other matrix.
+\end{eulercomment}
+\begin{eulerprompt}
+>mset(A,k,-random(size(A)))
+\end{eulerprompt}
+\begin{euleroutput}
+       0.765761      0.401188      0.406347     -0.126917 
+      -0.122404     -0.691673      0.495975      0.952814 
+       0.548138     -0.483902      0.444255      0.539246 
+\end{euleroutput}
+\begin{eulercomment}
+And it is possible to get the elements in a vector.
+\end{eulercomment}
+\begin{eulerprompt}
+>mget(A,k)
+\end{eulerprompt}
+\begin{euleroutput}
+  [0.267829,  0.13673,  0.390567,  0.006085]
+\end{euleroutput}
+\begin{eulercomment}
+Another useful function is extrema, which returns the minimal and
+maximal values in each row of the matrix and their positions.
+\end{eulercomment}
+\begin{eulerprompt}
+>ex=extrema(A)
+\end{eulerprompt}
+\begin{euleroutput}
+       0.267829             4      0.765761             1 
+        0.13673             1      0.952814             4 
+       0.006085             2      0.548138             1 
+\end{euleroutput}
+\begin{eulercomment}
+We can use this to extract the maximal values in each row.
+\end{eulercomment}
+\begin{eulerprompt}
+>ex[,3]'
+\end{eulerprompt}
+\begin{euleroutput}
+  [0.765761,  0.952814,  0.548138]
+\end{euleroutput}
+\begin{eulercomment}
+This, of course, is the same as the function max().
+\end{eulercomment}
+\begin{eulerprompt}
+>max(A)'
+\end{eulerprompt}
+\begin{euleroutput}
+  [0.765761,  0.952814,  0.548138]
+\end{euleroutput}
+\begin{eulercomment}
+But with mget(), we can extract the indices and use this information
+to extract the elements at the same positions from another matrix.
+\end{eulercomment}
+\begin{eulerprompt}
+>j=(1:rows(A))'|ex[,4], mget(-A,j)
+\end{eulerprompt}
+\begin{euleroutput}
+              1             1 
+              2             4 
+              3             1 
+  [-0.765761,  -0.952814,  -0.548138]
+\end{euleroutput}
+\begin{eulercomment}
+\begin{eulercomment}
+\eulerheading{Other Matrix Functions (Building Matrix)}
+\begin{eulercomment}
+To build a matrix, we can stack one matrix on top of another. If both
+do not have the same number of columns, the shorter one will be filled
+with 0.
+\end{eulercomment}
+\begin{eulerprompt}
+>v=1:3; v_v
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2             3 
+              1             2             3 
+\end{euleroutput}
+\begin{eulercomment}
+Likewise, we can attach a matrix to another side by side, if both have
+the same number of rows.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=random(3,4); A|v'
+\end{eulerprompt}
+\begin{euleroutput}
+       0.032444     0.0534171      0.595713      0.564454             1 
+        0.83916      0.175552      0.396988       0.83514             2 
+      0.0257573      0.658585      0.629832      0.770895             3 
+\end{euleroutput}
+\begin{eulercomment}
+If they do not have the same number of rows the shorter matrix is
+filled with 0.
+
+There is an exception to this rule. A real number attached to a matrix
+will be used as a column filled with that real number.
+\end{eulercomment}
+\begin{eulerprompt}
+>A|1
+\end{eulerprompt}
+\begin{euleroutput}
+       0.032444     0.0534171      0.595713      0.564454             1 
+        0.83916      0.175552      0.396988       0.83514             1 
+      0.0257573      0.658585      0.629832      0.770895             1 
+\end{euleroutput}
+\begin{eulercomment}
+It is possible to make a matrix of row and column vectors.
+\end{eulercomment}
+\begin{eulerprompt}
+>[v;v]
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2             3 
+              1             2             3 
+\end{euleroutput}
+\begin{eulerprompt}
+>[v',v']
+\end{eulerprompt}
+\begin{euleroutput}
+              1             1 
+              2             2 
+              3             3 
+\end{euleroutput}
+\begin{eulercomment}
+The main purpose of this is to interpret a vector of expressions for
+column vectors.
+\end{eulercomment}
+\begin{eulerprompt}
+>"[x,x^2]"(v')
+\end{eulerprompt}
+\begin{euleroutput}
+              1             1 
+              2             4 
+              3             9 
+\end{euleroutput}
+\begin{eulercomment}
+To get the size of A, we can use the following functions.
+\end{eulercomment}
+\begin{eulerprompt}
+>C=zeros(2,4); rows(C), cols(C), size(C), length(C)
+\end{eulerprompt}
+\begin{euleroutput}
+  2
+  4
+  [2,  4]
+  4
+\end{euleroutput}
+\begin{eulercomment}
+For vectors, there is length().
+\end{eulercomment}
+\begin{eulerprompt}
+>length(2:10)
+\end{eulerprompt}
+\begin{euleroutput}
+  9
+\end{euleroutput}
+\begin{eulercomment}
+There are many other functions, which generate matrices.
+\end{eulercomment}
+\begin{eulerprompt}
+>ones(2,2)
+\end{eulerprompt}
+\begin{euleroutput}
+              1             1 
+              1             1 
+\end{euleroutput}
+\begin{eulercomment}
+This can also be used with one parameter. To get a vector with another
+number than 1, use the following.
+\end{eulercomment}
+\begin{eulerprompt}
+>ones(5)*6
+\end{eulerprompt}
+\begin{euleroutput}
+  [6,  6,  6,  6,  6]
+\end{euleroutput}
+\begin{eulercomment}
+Also a matrix of random numbers can be generated with random (uniform
+distribution) or normal (Gauß distribution).
+\end{eulercomment}
+\begin{eulerprompt}
+>random(2,2)
+\end{eulerprompt}
+\begin{euleroutput}
+        0.66566      0.831835 
+          0.977      0.544258 
+\end{euleroutput}
+\begin{eulercomment}
+Here is another useful function, which restructures the elements of a
+matrix into another matrix.
+\end{eulercomment}
+\begin{eulerprompt}
+>redim(1:9,3,3) // menyusun elemen2 1, 2, 3, ..., 9 ke bentuk matriks 3x3
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2             3 
+              4             5             6 
+              7             8             9 
+\end{euleroutput}
+\begin{eulercomment}
+With the following function, we can use this and the dup function to
+write a rep() function, which repeats a vector n times.
+\end{eulercomment}
+\begin{eulerprompt}
+>function rep(v,n) := redim(dup(v,n),1,n*cols(v))
+\end{eulerprompt}
+\begin{eulercomment}
+Let us test.
+\end{eulercomment}
+\begin{eulerprompt}
+>rep(1:3,5)
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  2,  3,  1,  2,  3,  1,  2,  3,  1,  2,  3,  1,  2,  3]
+\end{euleroutput}
+\begin{eulercomment}
+The function multdup() duplicates elements of a vector.
+\end{eulercomment}
+\begin{eulerprompt}
+>multdup(1:3,5), multdup(1:3,[2,3,2])
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  3,  3,  3,  3,  3]
+  [1,  1,  2,  2,  2,  3,  3]
+\end{euleroutput}
+\begin{eulercomment}
+The functions flipx() and flipy() revert the order of the rows or
+columns of a matrix. I.e., the function flipx() flips horizontally.
+\end{eulercomment}
+\begin{eulerprompt}
+>flipx(1:5) //membalik elemen2 vektor baris
+\end{eulerprompt}
+\begin{euleroutput}
+  [5,  4,  3,  2,  1]
+\end{euleroutput}
+\begin{eulercomment}
+For rotations, Euler has rotleft() and rotright().
+\end{eulercomment}
+\begin{eulerprompt}
+>rotleft(1:5) // memutar elemen2 vektor baris
+\end{eulerprompt}
+\begin{euleroutput}
+  [2,  3,  4,  5,  1]
+\end{euleroutput}
+\begin{eulercomment}
+A special function is drop(v,i), which removes the elements with the
+indices in i from the vector v.
+\end{eulercomment}
+\begin{eulerprompt}
+>drop(10:20,3)
+\end{eulerprompt}
+\begin{euleroutput}
+  [10,  11,  13,  14,  15,  16,  17,  18,  19,  20]
+\end{euleroutput}
+\begin{eulercomment}
+Note that the vector i in drop(v,i) refers to indices of elements in
+v, not the values of the elements. If you want to remove elements, you
+need to find the elements first. The function indexof(v,x) can be used
+to find elements x in a sorted vector v.
+\end{eulercomment}
+\begin{eulerprompt}
+>v=primes(50), i=indexof(v,10:20), drop(v,i)
+\end{eulerprompt}
+\begin{euleroutput}
+  [2,  3,  5,  7,  11,  13,  17,  19,  23,  29,  31,  37,  41,  43,  47]
+  [0,  5,  0,  6,  0,  0,  0,  7,  0,  8,  0]
+  [2,  3,  5,  7,  23,  29,  31,  37,  41,  43,  47]
+\end{euleroutput}
+\begin{eulercomment}
+As you see, it does not harm to include indices out of range (like 0),
+double indices, or unsorted indices.
+\end{eulercomment}
+\begin{eulerprompt}
+>drop(1:10,shuffle([0,0,5,5,7,12,12]))
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  2,  3,  4,  6,  8,  9,  10]
+\end{euleroutput}
+\begin{eulercomment}
+There are some special functions to set diagonals or to generate a
+diagonal matrix.
+
+We start with the identity matrix.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=id(5) // matriks identitas 5x5
+\end{eulerprompt}
+\begin{euleroutput}
+              1             0             0             0             0 
+              0             1             0             0             0 
+              0             0             1             0             0 
+              0             0             0             1             0 
+              0             0             0             0             1 
+\end{euleroutput}
+\begin{eulercomment}
+Then we set the lower diagonal (-1) to 1:4.
+\end{eulercomment}
+\begin{eulerprompt}
+>setdiag(A,-1,1:4) //mengganti diagonal di bawah diagonal utama
+\end{eulerprompt}
+\begin{euleroutput}
+              1             0             0             0             0 
+              1             1             0             0             0 
+              0             2             1             0             0 
+              0             0             3             1             0 
+              0             0             0             4             1 
+\end{euleroutput}
+\begin{eulercomment}
+Note that we did not change the matrix A. We get a new matrix as
+result of setdiag().
+
+Here is a function, which returns a tri-diagonal matrix.
+\end{eulercomment}
+\begin{eulerprompt}
+>function tridiag (n,a,b,c) := setdiag(setdiag(b*id(n),1,c),-1,a); ...
+>tridiag(5,1,2,3)
+\end{eulerprompt}
+\begin{euleroutput}
+              2             3             0             0             0 
+              1             2             3             0             0 
+              0             1             2             3             0 
+              0             0             1             2             3 
+              0             0             0             1             2 
+\end{euleroutput}
+\begin{eulercomment}
+The diagonal of a matrix can also be extracted from the matrix. To
+demonstrate this, we restructure the vector 1:9 to a 3x3 matrix.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=redim(1:9,3,3)
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2             3 
+              4             5             6 
+              7             8             9 
+\end{euleroutput}
+\begin{eulercomment}
+Now we can extract the diagonal.
+\end{eulercomment}
+\begin{eulerprompt}
+>d=getdiag(A,0)
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  5,  9]
+\end{euleroutput}
+\begin{eulercomment}
+E.g. We can divide the matrix by its diagonal. The matrix language
+takes care that the column vector d is applied to the matrix row by
+row.
+\end{eulercomment}
+\begin{eulerprompt}
+>fraction A/d'
+\end{eulerprompt}
+\begin{euleroutput}
+          1         2         3 
+        4/5         1       6/5 
+        7/9       8/9         1 
+\end{euleroutput}
+\eulerheading{Vectorization}
+\begin{eulercomment}
+Almost all functions in Euler work for matrix and vector input too,
+whenever this makes sense.
+
+E.g., the sqrt() function computes the square root of all elements of
+the vector or matrix.
+\end{eulercomment}
+\begin{eulerprompt}
+>sqrt(1:3)
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  1.41421,  1.73205]
+\end{euleroutput}
+\begin{eulercomment}
+So you can easily create a table of values. This is one way to plot a
+function (the alternative uses an expression).
+\end{eulercomment}
+\begin{eulerprompt}
+>x=1:0.01:5; y=log(x)/x^2; // terlalu panjang untuk ditampikan
+\end{eulerprompt}
+\begin{eulercomment}
+With this and the colon operator a:delta:b, vectors of values of functions
+can be generated easily.
+
+In the following example, we generate a vector of values t[i] with spacing
+0.1 from -1 to 1. Then we generate a vector of values of the function
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+s = t^3-t
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>t=-1:0.1:1; s=t^3-t
+\end{eulerprompt}
+\begin{euleroutput}
+  [0,  0.171,  0.288,  0.357,  0.384,  0.375,  0.336,  0.273,  0.192,
+  0.099,  0,  -0.099,  -0.192,  -0.273,  -0.336,  -0.375,  -0.384,
+  -0.357,  -0.288,  -0.171,  0]
+\end{euleroutput}
+\begin{eulercomment}
+EMT expands operators for scalars, vectors, and matrices in the obvious way.
+
+E.g., a column vector times a row vector expands to matrix, if an an operator
+is applied. In the following, v' is the transposed vector (a column vector).
+\end{eulercomment}
+\begin{eulerprompt}
+>shortest (1:5)*(1:5)'
+\end{eulerprompt}
+\begin{euleroutput}
+       1      2      3      4      5 
+       2      4      6      8     10 
+       3      6      9     12     15 
+       4      8     12     16     20 
+       5     10     15     20     25 
+\end{euleroutput}
+\begin{eulercomment}
+Note, that this is quite different from the matrix product. The matrix
+product is denoted with a dot "." in EMT.
+\end{eulercomment}
+\begin{eulerprompt}
+>(1:5).(1:5)'
+\end{eulerprompt}
+\begin{euleroutput}
+  55
+\end{euleroutput}
+\begin{eulercomment}
+By default, row vectors are printed in a compact format.
+\end{eulercomment}
+\begin{eulerprompt}
+>[1,2,3,4]
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  2,  3,  4]
+\end{euleroutput}
+\begin{eulercomment}
+For matrices the special operator . denotes matrix multiplication, and A'
+denotes transposing. A 1x1 matrix can be used just like a real number.
+\end{eulercomment}
+\begin{eulerprompt}
+>v:=[1,2]; v.v', %^2
+\end{eulerprompt}
+\begin{euleroutput}
+  5
+  25
+\end{euleroutput}
+\begin{eulercomment}
+To transpose a matrix we use the apostrophe.
+\end{eulercomment}
+\begin{eulerprompt}
+>v=1:4; v'
+\end{eulerprompt}
+\begin{euleroutput}
+              1 
+              2 
+              3 
+              4 
+\end{euleroutput}
+\begin{eulercomment}
+So we can compute matrix A times vector b.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=[1,2,3,4;5,6,7,8]; A.v'
+\end{eulerprompt}
+\begin{euleroutput}
+             30 
+             70 
+\end{euleroutput}
+\begin{eulercomment}
+Note that v is still a row vector. So v'.v is different from v.v'.
+\end{eulercomment}
+\begin{eulerprompt}
+>v'.v
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2             3             4 
+              2             4             6             8 
+              3             6             9            12 
+              4             8            12            16 
+\end{euleroutput}
+\begin{eulercomment}
+v.v' computes the norm of v squared for row vectors v. The result is a
+1x1 vector, which works just like a real number.
+\end{eulercomment}
+\begin{eulerprompt}
+>v.v'
+\end{eulerprompt}
+\begin{euleroutput}
+  30
+\end{euleroutput}
+\begin{eulercomment}
+There is also the function norm (along with many other function of
+Linear Algebra).
+\end{eulercomment}
+\begin{eulerprompt}
+>norm(v)^2
+\end{eulerprompt}
+\begin{euleroutput}
+  30
+\end{euleroutput}
+\begin{eulercomment}
+Operators and functions obey the matrix language of Euler.
+
+Here is a summary of the rules.
+
+- A function applied to a vector or matrix is applied to each element.
+
+- An operator operating on two matrices of same size is applied pairwise to
+the elements of the matrices.
+
+- If the two matrices have different dimensions, both are expanded in a
+sensible way, so that they have the same size.
+
+E.g., a scalar value times a vector multiplies the value with each element of
+the vector. Or a matrix times a vector (with *, not .) expands the vector to
+the size of the matrix by duplicating it.
+
+The following is a simple case with the operator \textasciicircum{}.
+\end{eulercomment}
+\begin{eulerprompt}
+>[1,2,3]^2
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  4,  9]
+\end{euleroutput}
+\begin{eulercomment}
+Here is a more complicated case. A row vector times a column vector expands
+both by duplicating.
+\end{eulercomment}
+\begin{eulerprompt}
+>v:=[1,2,3]; v*v'
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2             3 
+              2             4             6 
+              3             6             9 
+\end{euleroutput}
+\begin{eulercomment}
+Note that the scalar product uses the matrix product, not the *!
+\end{eulercomment}
+\begin{eulerprompt}
+>v.v'
+\end{eulerprompt}
+\begin{euleroutput}
+  14
+\end{euleroutput}
+\begin{eulercomment}
+There are numerous functions for matrices. We give a short list. You should to consult
+the documentation for more information on these commands.
+
+\end{eulercomment}
+\begin{eulerttcomment}
+  sum,prod computes the sum and products of the rows
+  cumsum,cumprod does the same cumulatively
+  computes the extremal values of each row
+  extrema returns a vector with the extremal information
+  diag(A,i) returns the i-th diagonal
+  setdiag(A,i,v) sets the i-th diagonal
+  id(n) the identity matrix
+  det(A) the determinant
+  charpoly(A) the characteristic polynomial
+  eigenvalues(A) the eigenvalues
+\end{eulerttcomment}
+\begin{eulerprompt}
+>v*v, sum(v*v), cumsum(v*v)
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  4,  9]
+  14
+  [1,  5,  14]
+\end{euleroutput}
+\begin{eulercomment}
+The : operator generates an equally spaces row vector, optionally with a step
+size.
+\end{eulercomment}
+\begin{eulerprompt}
+>1:4, 1:2:10
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  2,  3,  4]
+  [1,  3,  5,  7,  9]
+\end{euleroutput}
+\begin{eulercomment}
+To concatenate matrices and vectors there are the operators "\textbar{}" and "\_".
+\end{eulercomment}
+\begin{eulerprompt}
+>[1,2,3]|[4,5], [1,2,3]_1
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  2,  3,  4,  5]
+              1             2             3 
+              1             1             1 
+\end{euleroutput}
+\begin{eulercomment}
+The elements of a matrix are referred with "A[i,j]".
+\end{eulercomment}
+\begin{eulerprompt}
+>A:=[1,2,3;4,5,6;7,8,9]; A[2,3]
+\end{eulerprompt}
+\begin{euleroutput}
+  6
+\end{euleroutput}
+\begin{eulercomment}
+For row or column vectors, v[i] is the i-th element of the vector. For
+matrices, this returns the complete i-th row of the matrix.
+\end{eulercomment}
+\begin{eulerprompt}
+>v:=[2,4,6,8]; v[3], A[3]
+\end{eulerprompt}
+\begin{euleroutput}
+  6
+  [7,  8,  9]
+\end{euleroutput}
+\begin{eulercomment}
+The indices can also be row vectors of indices. : denotes all indices.
+\end{eulercomment}
+\begin{eulerprompt}
+>v[1:2], A[:,2]
+\end{eulerprompt}
+\begin{euleroutput}
+  [2,  4]
+              2 
+              5 
+              8 
+\end{euleroutput}
+\begin{eulercomment}
+A short form for : is omitting the index completely.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[,2:3]
+\end{eulerprompt}
+\begin{euleroutput}
+              2             3 
+              5             6 
+              8             9 
+\end{euleroutput}
+\begin{eulercomment}
+For purposes of vectorization, the elements of a matrix can be accessed as if
+they were vectors.
+\end{eulercomment}
+\begin{eulerprompt}
+>A\{4\}
+\end{eulerprompt}
+\begin{euleroutput}
+  4
+\end{euleroutput}
+\begin{eulercomment}
+A matrix can also be flattened, using the redim() function. This is
+implemented in the function flatten().
+\end{eulercomment}
+\begin{eulerprompt}
+>redim(A,1,prod(size(A))), flatten(A)
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  2,  3,  4,  5,  6,  7,  8,  9]
+  [1,  2,  3,  4,  5,  6,  7,  8,  9]
+\end{euleroutput}
+\begin{eulercomment}
+To use matrices for tables, let us reset to the default format, and
+compute a table of sine and cosine values. Note that angles are in
+radians by default.
+\end{eulercomment}
+\begin{eulerprompt}
+>defformat; w=0°:45°:360°; w=w'; deg(w)
+\end{eulerprompt}
+\begin{euleroutput}
+              0 
+             45 
+             90 
+            135 
+            180 
+            225 
+            270 
+            315 
+            360 
+\end{euleroutput}
+\begin{eulercomment}
+Now we append columns to a matrix.
+\end{eulercomment}
+\begin{eulerprompt}
+>M = deg(w)|w|cos(w)|sin(w)
+\end{eulerprompt}
+\begin{euleroutput}
+              0             0             1             0 
+             45      0.785398      0.707107      0.707107 
+             90        1.5708             0             1 
+            135       2.35619     -0.707107      0.707107 
+            180       3.14159            -1             0 
+            225       3.92699     -0.707107     -0.707107 
+            270       4.71239             0            -1 
+            315       5.49779      0.707107     -0.707107 
+            360       6.28319             1             0 
+\end{euleroutput}
+\begin{eulercomment}
+Using the matrix language, we can generate several tables of several
+functions at once.
+
+In the following example, we compute t[j]\textasciicircum{}i for i from 1 to n. We get a matrix,
+where each row is a table of t\textasciicircum{}i for one i. I.e., the matrix has the
+elements
+\end{eulercomment}
+\begin{eulerformula}
+\[
+a_{i,j} = t_j^i, \quad 1 \le j \le 101, \quad 1 \le i \le n
+\]
+\end{eulerformula}
+\begin{eulercomment}
+A function which does not work for vector input should be "vectorized". This
+can be achieved by the "map" keyword in the function definition. Then the
+function will be evaluated for each element of a vector parameter.
+
+The numerical integration integrate() works only for scalar interval bounds.
+So we need to vectorize it.
+\end{eulercomment}
+\begin{eulerprompt}
+>function map f(x) := integrate("x^x",1,x)
+\end{eulerprompt}
+\begin{eulercomment}
+The "map" keyword vectorizes the function. The function will now work\\
+for vectors of numbers.
+\end{eulercomment}
+\begin{eulerprompt}
+>f([1:5])
+\end{eulerprompt}
+\begin{euleroutput}
+  [0,  2.05045,  13.7251,  113.336,  1241.03]
+\end{euleroutput}
+\eulerheading{Sub-Matrices and Matrix-Elements}
+\begin{eulercomment}
+To access a matrix element, use the bracket notation.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=[1,2,3;4,5,6;7,8,9], A[2,2]
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2             3 
+              4             5             6 
+              7             8             9 
+  5
+\end{euleroutput}
+\begin{eulercomment}
+We can access a complete line of a matrix.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[2]
+\end{eulerprompt}
+\begin{euleroutput}
+  [4,  5,  6]
+\end{euleroutput}
+\begin{eulercomment}
+In case of row or column vectors, this returns an element of the
+vector.
+\end{eulercomment}
+\begin{eulerprompt}
+>v=1:3; v[2]
+\end{eulerprompt}
+\begin{euleroutput}
+  2
+\end{euleroutput}
+\begin{eulercomment}
+To make sure, you get the first row for a 1xn and a mxn matrix,
+specify all columns using an empty second index.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[2,]
+\end{eulerprompt}
+\begin{euleroutput}
+  [4,  5,  6]
+\end{euleroutput}
+\begin{eulercomment}
+If the index is a vector of indices, Euler will return the
+corresponding rows of the matrix.
+
+Here we want the first and second row of A.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[[1,2]]
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2             3 
+              4             5             6 
+\end{euleroutput}
+\begin{eulercomment}
+We can even reorder A using vectors of indices. To be precise, we do
+not change A here, but compute a reordered version of A.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[[3,2,1]]
+\end{eulerprompt}
+\begin{euleroutput}
+              7             8             9 
+              4             5             6 
+              1             2             3 
+\end{euleroutput}
+\begin{eulercomment}
+The index trick works with columns too.
+
+This example selects all rows of A and the second and third column.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[1:3,2:3]
+\end{eulerprompt}
+\begin{euleroutput}
+              2             3 
+              5             6 
+              8             9 
+\end{euleroutput}
+\begin{eulercomment}
+For abbreviation ":" denotes all row or column indices.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[:,3]
+\end{eulerprompt}
+\begin{euleroutput}
+              3 
+              6 
+              9 
+\end{euleroutput}
+\begin{eulercomment}
+Alternatively, leave the first index empty.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[,2:3]
+\end{eulerprompt}
+\begin{euleroutput}
+              2             3 
+              5             6 
+              8             9 
+\end{euleroutput}
+\begin{eulercomment}
+We can also get the last line of A.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[-1]
+\end{eulerprompt}
+\begin{euleroutput}
+  [7,  8,  9]
+\end{euleroutput}
+\begin{eulercomment}
+Now let us change elements of A by assigning a submatrix of A to some
+value. This does in fact change the stored matrix A.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[1,1]=4
+\end{eulerprompt}
+\begin{euleroutput}
+              4             2             3 
+              4             5             6 
+              7             8             9 
+\end{euleroutput}
+\begin{eulercomment}
+We can also assign a value to a row of A.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[1]=[-1,-1,-1]
+\end{eulerprompt}
+\begin{euleroutput}
+             -1            -1            -1 
+              4             5             6 
+              7             8             9 
+\end{euleroutput}
+\begin{eulercomment}
+We can even assign to a sub-matrix if it has the proper size.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[1:2,1:2]=[5,6;7,8]
+\end{eulerprompt}
+\begin{euleroutput}
+              5             6            -1 
+              7             8             6 
+              7             8             9 
+\end{euleroutput}
+\begin{eulercomment}
+Moreover, some shortcuts are allowed.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[1:2,1:2]=0
+\end{eulerprompt}
+\begin{euleroutput}
+              0             0            -1 
+              0             0             6 
+              7             8             9 
+\end{euleroutput}
+\begin{eulercomment}
+A warning: Indices out of bounds return empty matrices, or an error
+message, depending on a system setting. The default is an error
+message. Remember, however, that negative indices may be used to
+access the elements of a matrix counting from the end.
+\end{eulercomment}
+\begin{eulerprompt}
+>A[4]
+\end{eulerprompt}
+\begin{euleroutput}
+  Row index 4 out of bounds!
+  Error in:
+  A[4] ...
+      ^
+\end{euleroutput}
+\eulerheading{Sorting and Shuffling}
+\begin{eulercomment}
+The function sort() sorts a row vector.
+\end{eulercomment}
+\begin{eulerprompt}
+>sort([5,6,4,8,1,9])
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  4,  5,  6,  8,  9]
+\end{euleroutput}
+\begin{eulercomment}
+It is often necessary to know the indices of the sorted vector in the
+original vector. This can be used to reorder another vector in the
+same way.
+
+Let us shuffle a vector.
+\end{eulercomment}
+\begin{eulerprompt}
+>v=shuffle(1:10)
+\end{eulerprompt}
+\begin{euleroutput}
+  [4,  5,  10,  6,  8,  9,  1,  7,  2,  3]
+\end{euleroutput}
+\begin{eulercomment}
+The indices contain the proper order of v.
+\end{eulercomment}
+\begin{eulerprompt}
+>\{vs,ind\}=sort(v); v[ind]
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  2,  3,  4,  5,  6,  7,  8,  9,  10]
+\end{euleroutput}
+\begin{eulercomment}
+This works for string vectors too.
+\end{eulercomment}
+\begin{eulerprompt}
+>s=["a","d","e","a","aa","e"]
+\end{eulerprompt}
+\begin{euleroutput}
+  a
+  d
+  e
+  a
+  aa
+  e
+\end{euleroutput}
+\begin{eulerprompt}
+>\{ss,ind\}=sort(s); ss
+\end{eulerprompt}
+\begin{euleroutput}
+  a
+  a
+  aa
+  d
+  e
+  e
+\end{euleroutput}
+\begin{eulercomment}
+As you see, the position of double entries is somewhat random.
+\end{eulercomment}
+\begin{eulerprompt}
+>ind
+\end{eulerprompt}
+\begin{euleroutput}
+  [4,  1,  5,  2,  6,  3]
+\end{euleroutput}
+\begin{eulercomment}
+The function unique returns a sorted list of unique elements of a
+vector.
+\end{eulercomment}
+\begin{eulerprompt}
+>intrandom(1,10,10), unique(%)
+\end{eulerprompt}
+\begin{euleroutput}
+  [4,  4,  9,  2,  6,  5,  10,  6,  5,  1]
+  [1,  2,  4,  5,  6,  9,  10]
+\end{euleroutput}
+\begin{eulercomment}
+This works for string vectors too.
+\end{eulercomment}
+\begin{eulerprompt}
+>unique(s)
+\end{eulerprompt}
+\begin{euleroutput}
+  a
+  aa
+  d
+  e
+\end{euleroutput}
+\eulerheading{Linear Algebra}
+\begin{eulercomment}
+EMT has lots of functions to solve linear systems, sparse systems, or
+regression problems.
+
+For linear systems Ax=b, you can use the Gauss algorithm, the inverse matrix
+or a linear fit. The operator A\textbackslash{}b uses a version of the Gauss algorithm.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=[1,2;3,4]; b=[5;6]; A\(\backslash\)b
+\end{eulerprompt}
+\begin{euleroutput}
+             -4 
+            4.5 
+\end{euleroutput}
+\begin{eulercomment}
+For another example, we generate a 200x200 matrix and the sum of its rows.
+Then we solve Ax=b using the inverse matrix. We measure the error as the
+maximal deviation of all elements from 1, which of course is the correct
+solution.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=normal(200,200); b=sum(A); longest totalmax(abs(inv(A).b-1))
+\end{eulerprompt}
+\begin{euleroutput}
+    8.790745908981989e-13 
+\end{euleroutput}
+\begin{eulercomment}
+If the system does not have a solution, a linear fit minimizes the norm of
+the error Ax-b.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=[1,2,3;4,5,6;7,8,9]
+\end{eulerprompt}
+\begin{euleroutput}
+              1             2             3 
+              4             5             6 
+              7             8             9 
+\end{euleroutput}
+\begin{eulercomment}
+The determinant of this matrix is 0.
+\end{eulercomment}
+\begin{eulerprompt}
+>det(A)
+\end{eulerprompt}
+\begin{euleroutput}
+  0
+\end{euleroutput}
+\eulerheading{Symbolic Matrices}
+\begin{eulercomment}
+Maxima has symbolic matrices. Of course, Maxima can be used for such simple linear algebra problems.
+We can define the matrix for Euler and Maxima with \&:=, and then use
+it in symbolic expressions.
+The usual [...] form to define matrices can be used in Euler to define symbolic
+matrices.
+\end{eulercomment}
+\begin{eulerprompt}
+>A &= [a,1,1;1,a,1;1,1,a]; $A
+>$&det(A), $&factor(%)
+>$&invert(A) with a=0
+>A &= [1,a;b,2]; $A
+\end{eulerprompt}
+\begin{eulercomment}
+Like all symbolic variables, these matrices can be used in other
+symbolic expressions.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&det(A-x*ident(2)), $&solve(%,x)
+\end{eulerprompt}
+\begin{eulercomment}
+The eigenvalues can also be computed automatically. The result is a
+vector with two vectors of eigenvalues and multiplicities.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&eigenvalues([a,1;1,a])
+\end{eulerprompt}
+\begin{eulercomment}
+To extract a specific eigenvector needs careful indexing.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&eigenvectors([a,1;1,a]), &%[2][1][1]
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                                 [1, - 1]
+  
+\end{euleroutput}
+\begin{eulercomment}
+Symbolic matrices can be evaluated in Euler numerically just like
+other symbolic expressions.
+\end{eulercomment}
+\begin{eulerprompt}
+>A(a=4,b=5)
+\end{eulerprompt}
+\begin{euleroutput}
+              1             4 
+              5             2 
+\end{euleroutput}
+\begin{eulercomment}
+In symbolic expressions, use with.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&A with [a=4,b=5]
+\end{eulerprompt}
+\begin{eulercomment}
+Access to rows of symbolic matrices work just like with numerical
+matrices.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&A[1]
+\end{eulerprompt}
+\begin{eulercomment}
+A symbolic expression can contain an assignment. And that changes the
+matrix A.
+\end{eulercomment}
+\begin{eulerprompt}
+>&A[1,1]:=t+1; $&A
+\end{eulerprompt}
+\begin{eulercomment}
+There are symbolic functions in Maxima to create vectors and matrices.
+For this, refer to the documentation of Maxima or to the tutorial
+about Maxima in EMT.
+\end{eulercomment}
+\begin{eulerprompt}
+>v &= makelist(1/(i+j),i,1,3); $v
+\end{eulerprompt}
+\begin{eulerttcomment}
+ 
+\end{eulerttcomment}
+\begin{eulerprompt}
+>B &:= [1,2;3,4]; $B, $&invert(B)
+\end{eulerprompt}
+\begin{eulercomment}
+The result can be evaluated numerically in Euler. For more information
+about Maxima, see the introduction to Maxima.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&invert(B)()
+\end{eulerprompt}
+\begin{euleroutput}
+             -2             1 
+            1.5          -0.5 
+\end{euleroutput}
+\begin{eulercomment}
+Euler has also a powerful function xinv(), which makes a bigger effort
+and gets more exact results.
+
+Note, that with \&:= the matrix B has been defined as symbolic in
+symbolic expressions and as numerical in numerical expressions. So we
+can use it here.
+\end{eulercomment}
+\begin{eulerprompt}
+>longest B.xinv(B)
+\end{eulerprompt}
+\begin{euleroutput}
+                        1                       0 
+                        0                       1 
+\end{euleroutput}
+\begin{eulercomment}
+E.g. the eigenvalues of A can be computed numerically.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=[1,2,3;4,5,6;7,8,9]; real(eigenvalues(A))
+\end{eulerprompt}
+\begin{euleroutput}
+  [16.1168,  -1.11684,  0]
+\end{euleroutput}
+\begin{eulercomment}
+Or symbolically. See the tutorial about Maxima for details on this.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&eigenvalues(@A)
+\end{eulerprompt}
+\eulerheading{Numerical Values in symbolic Expressions}
+\begin{eulercomment}
+A symbolic expression is just a string containing an expression. If we
+want to define a value both for symbolic expressions and for numerical
+expressions, we must use "\&:=".
+\end{eulercomment}
+\begin{eulerprompt}
+>A &:= [1,pi;4,5]
+\end{eulerprompt}
+\begin{euleroutput}
+              1       3.14159 
+              4             5 
+\end{euleroutput}
+\begin{eulercomment}
+There is still a difference between the numerical and the symbolic
+form. When transferring the matrix to the symbolic form, fractional
+approximations for reals will be used.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&A
+\end{eulerprompt}
+\begin{eulercomment}
+To avoid this, there is the function "mxmset(variable)".
+\end{eulercomment}
+\begin{eulerprompt}
+>mxmset(A); $&A
+\end{eulerprompt}
+\begin{eulercomment}
+Maxima can also compute with floating point numbers, and even with big
+floating numbers with 32 digits. The evaluation is much slower,
+however.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&bfloat(sqrt(2)), $&float(sqrt(2))
+\end{eulerprompt}
+\begin{eulercomment}
+The precision of the big floating point numbers can be changed.
+\end{eulercomment}
+\begin{eulerprompt}
+>&fpprec:=100; &bfloat(pi)
+\end{eulerprompt}
+\begin{euleroutput}
+  
+          3.14159265358979323846264338327950288419716939937510582097494\(\backslash\)
+  4592307816406286208998628034825342117068b0
+  
+\end{euleroutput}
+\begin{eulercomment}
+A numerical variable can be used in any symbolic expressions using
+"@var".
+
+Note that this is only necessary, if the variable has been defined
+with ":=" or "=" as a numerical variable.
+\end{eulercomment}
+\begin{eulerprompt}
+>B:=[1,pi;3,4]; $&det(@B)
+\end{eulerprompt}
+\begin{eulercomment}
+\begin{eulercomment}
+\eulerheading{Demo - Interest Rates}
+\begin{eulercomment}
+Below, we use Euler Math Toolbox (EMT) for the calculation of interest rates.
+We do that numerically and symbolically to show you how Euler can be used to
+solve real life problems.
+
+Assume you have a seed capital of 5000 (say in dollars).
+\end{eulercomment}
+\begin{eulerprompt}
+>K=5000
+\end{eulerprompt}
+\begin{euleroutput}
+  5000
+\end{euleroutput}
+\begin{eulercomment}
+Now we assume an interest rate of 3\% per year. Let us add one simple rate and
+compute the result.
+\end{eulercomment}
+\begin{eulerprompt}
+>K*1.03
+\end{eulerprompt}
+\begin{euleroutput}
+  5150
+\end{euleroutput}
+\begin{eulercomment}
+Euler would understand the following syntax too.
+\end{eulercomment}
+\begin{eulerprompt}
+>K+K*3%
+\end{eulerprompt}
+\begin{euleroutput}
+  5150
+\end{euleroutput}
+\begin{eulercomment}
+But it is easier to use the factor
+\end{eulercomment}
+\begin{eulerprompt}
+>q=1+3%, K*q
+\end{eulerprompt}
+\begin{euleroutput}
+  1.03
+  5150
+\end{euleroutput}
+\begin{eulercomment}
+For 10 years, we can simply multiply the factors and get the final value with
+compound interest rates.
+\end{eulercomment}
+\begin{eulerprompt}
+>K*q^10
+\end{eulerprompt}
+\begin{euleroutput}
+  6719.58189672
+\end{euleroutput}
+\begin{eulercomment}
+For our purposes, we can set the format to 2 digits after the decimal dot.
+\end{eulercomment}
+\begin{eulerprompt}
+>format(12,2); K*q^10
+\end{eulerprompt}
+\begin{euleroutput}
+      6719.58 
+\end{euleroutput}
+\begin{eulercomment}
+Let us print that rounded to 2 digits in a complete sentence.
+\end{eulercomment}
+\begin{eulerprompt}
+>"Starting from " + K + "$ you get " + round(K*q^10,2) + "$."
+\end{eulerprompt}
+\begin{euleroutput}
+  Starting from 5000$ you get 6719.58$.
+\end{euleroutput}
+\begin{eulercomment}
+What if we want to know the intermediate results from year 1 to year 9? For
+this, Euler's matrix language is a big help. You do not have to write a loop,
+but simply enter
+\end{eulercomment}
+\begin{eulerprompt}
+>K*q^(0:10)
+\end{eulerprompt}
+\begin{euleroutput}
+  Real 1 x 11 matrix
+  
+      5000.00     5150.00     5304.50     5463.64     ...
+\end{euleroutput}
+\begin{eulercomment}
+How does this miracle work? First the expression 0:10 returns a vector of
+integers.
+\end{eulercomment}
+\begin{eulerprompt}
+>short 0:10
+\end{eulerprompt}
+\begin{euleroutput}
+  [0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10]
+\end{euleroutput}
+\begin{eulercomment}
+Then all operators and functions in Euler can be applied to vectors element
+for element. So
+\end{eulercomment}
+\begin{eulerprompt}
+>short q^(0:10)
+\end{eulerprompt}
+\begin{euleroutput}
+  [1,  1.03,  1.0609,  1.0927,  1.1255,  1.1593,  1.1941,  1.2299,
+  1.2668,  1.3048,  1.3439]
+\end{euleroutput}
+\begin{eulercomment}
+is a vector of factors q\textasciicircum{}0 to q\textasciicircum{}10. This is multiplied by K, and we get the
+vector of values.
+\end{eulercomment}
+\begin{eulerprompt}
+>VK=K*q^(0:10);
+\end{eulerprompt}
+\begin{eulercomment}
+Of course, the realistic way to compute these interest rates would be to
+round to the nearest cent after each year. Let us add a function for this.
+\end{eulercomment}
+\begin{eulerprompt}
+>function oneyear (K) := round(K*q,2)
+\end{eulerprompt}
+\begin{eulercomment}
+Let us compare the two results, with and without rounding.
+\end{eulercomment}
+\begin{eulerprompt}
+>longest oneyear(1234.57), longest 1234.57*q
+\end{eulerprompt}
+\begin{euleroutput}
+                  1271.61 
+                1271.6071 
+\end{euleroutput}
+\begin{eulercomment}
+Now there is no simple formula for the n-th year, and we must loop over the
+years. Euler provides many solutions for this.
+
+The easiest way is the function iterate, which iterates a given function a
+number of times.
+\end{eulercomment}
+\begin{eulerprompt}
+>VKr=iterate("oneyear",5000,10)
+\end{eulerprompt}
+\begin{euleroutput}
+  Real 1 x 11 matrix
+  
+      5000.00     5150.00     5304.50     5463.64     ...
+\end{euleroutput}
+\begin{eulercomment}
+We can print that in a friendly way, using our format with fixed decimal
+places.
+\end{eulercomment}
+\begin{eulerprompt}
+>VKr'
+\end{eulerprompt}
+\begin{euleroutput}
+      5000.00 
+      5150.00 
+      5304.50 
+      5463.64 
+      5627.55 
+      5796.38 
+      5970.27 
+      6149.38 
+      6333.86 
+      6523.88 
+      6719.60 
+\end{euleroutput}
+\begin{eulercomment}
+To get a specific element of the vector, we use indices in square brackets.
+\end{eulercomment}
+\begin{eulerprompt}
+>VKr[2], VKr[1:3]
+\end{eulerprompt}
+\begin{euleroutput}
+      5150.00 
+      5000.00     5150.00     5304.50 
+\end{euleroutput}
+\begin{eulercomment}
+Surprisingly, we can also use a vector of indices. Remember that 1:3 produced
+the vector [1,2,3].
+
+Let us compare the last element of the rounded values with the full values.
+\end{eulercomment}
+\begin{eulerprompt}
+>VKr[-1], VK[-1]
+\end{eulerprompt}
+\begin{euleroutput}
+      6719.60 
+      6719.58 
+\end{euleroutput}
+\begin{eulercomment}
+The difference is very small.
+
+\begin{eulercomment}
+\eulerheading{Solving Equations}
+\begin{eulercomment}
+Now we take a more advanced function, which adds a certain rate of money each
+year.
+\end{eulercomment}
+\begin{eulerprompt}
+>function onepay (K) := K*q+R
+\end{eulerprompt}
+\begin{eulercomment}
+We do not have to specify q or R for the definition of the function. Only if
+we run the command, we have to define these values. We select R=200.
+\end{eulercomment}
+\begin{eulerprompt}
+>R=200; iterate("onepay",5000,10)
+\end{eulerprompt}
+\begin{euleroutput}
+  Real 1 x 11 matrix
+  
+      5000.00     5350.00     5710.50     6081.82     ...
+\end{euleroutput}
+\begin{eulercomment}
+What if we remove the same amount each year?
+\end{eulercomment}
+\begin{eulerprompt}
+>R=-200; iterate("onepay",5000,10)
+\end{eulerprompt}
+\begin{euleroutput}
+  Real 1 x 11 matrix
+  
+      5000.00     4950.00     4898.50     4845.45     ...
+\end{euleroutput}
+\begin{eulercomment}
+We see that the money decreases. Obviously, if we get only 150 of interest in
+the first year, but remove 200, we lose money each year.
+
+How can we determine the number of years the money will last? We would have
+to write a loop for this. The easiest way is to iterate long enough.
+\end{eulercomment}
+\begin{eulerprompt}
+>VKR=iterate("onepay",5000,50)
+\end{eulerprompt}
+\begin{euleroutput}
+  Real 1 x 51 matrix
+  
+      5000.00     4950.00     4898.50     4845.45     ...
+\end{euleroutput}
+\begin{eulercomment}
+Using the matrix language, we can determine the first negative value in the
+following way.
+\end{eulercomment}
+\begin{eulerprompt}
+>min(nonzeros(VKR<0))
+\end{eulerprompt}
+\begin{euleroutput}
+        48.00 
+\end{euleroutput}
+\begin{eulercomment}
+The reason for this is that nonzeros(VKR\textless{}0) returns a vector of indices i,
+where VKR[i]\textless{}0, and min computes the minimal index.
+
+Since vectors always start with index 1, the answer is 47 years.
+
+The function iterate() has one more trick. It can take an end condition as an
+argument. Then it will return the value and the number of iterations.
+\end{eulercomment}
+\begin{eulerprompt}
+>\{x,n\}=iterate("onepay",5000,till="x<0"); x, n,
+\end{eulerprompt}
+\begin{euleroutput}
+       -19.83 
+        47.00 
+\end{euleroutput}
+\begin{eulercomment}
+Let us try to answer a more ambiguous question. Assume we know that the value
+is 0 after 50 years. What would be the interest rate?
+
+This is a question, which can only be answered numerically. Below, we will
+derive the necessary formulas. Then you will see that there is no easy
+formula for the interest rate. But for now, we aim for a numerical solution.
+
+The first step is to define a function which does the iteration n times. We
+add all parameters to this function.
+\end{eulercomment}
+\begin{eulerprompt}
+>function f(K,R,P,n) := iterate("x*(1+P/100)+R",K,n;P,R)[-1]
+\end{eulerprompt}
+\begin{eulercomment}
+The iteration is just as above
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+x_{n+1} = x_n \cdot \left(1+ \frac{P}{100}\right) + R
+\]
+\end{eulerformula}
+\begin{eulercomment}
+But we do longer use the global value of R in our expression. Functions like
+iterate() have a special trick in Euler. You can pass the values of variables
+in the expression as semicolon parameters. In this case P and R.
+
+Moreover, we are only interested in the last value. So we take the index
+[-1].
+
+Let us try a test.
+\end{eulercomment}
+\begin{eulerprompt}
+>f(5000,-200,3,47)
+\end{eulerprompt}
+\begin{euleroutput}
+       -19.83 
+\end{euleroutput}
+\begin{eulercomment}
+Now we can solve our problem.
+\end{eulercomment}
+\begin{eulerprompt}
+>solve("f(5000,-200,x,50)",3)
+\end{eulerprompt}
+\begin{euleroutput}
+         3.15 
+\end{euleroutput}
+\begin{eulercomment}
+The solve routine solves expression=0 for the variable x. The answer is 3.15\%
+per year. We take the start value of 3\% for the algorithm. The solve()
+function always needs a start value.
+
+We can use the same function to solve the following question: How much can we
+remove per year so that the seed capital is exhausted after 20 years assuming
+an interest rate of 3\% per year.
+\end{eulercomment}
+\begin{eulerprompt}
+>solve("f(5000,x,3,20)",-200)
+\end{eulerprompt}
+\begin{euleroutput}
+      -336.08 
+\end{euleroutput}
+\begin{eulercomment}
+Note that you cannot solve for the number of years, since our function
+assumes n to be an integer value.
+
+\end{eulercomment}
+\eulersubheading{Solusi Simbolis Masalah Suku Bunga}
+\begin{eulercomment}
+Kita dapat menggunakan bagian simbolis dari Euler untuk mempelajari
+masalahnya. Pertama kita mendefinisikan fungsi onepay() kita secara
+simbolis.
+\end{eulercomment}
+\begin{eulerprompt}
+>function op(K) &= K*q+R; $&op(K)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+q\,K+R
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Sekarang kita dapat mengulanginya.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&op(op(op(op(K)))), $&expand
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+R+q\,\left(R+q\,\left(R+q\,\left(q\,K+R\right)\right)\right)
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+{\it expand}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Kita melihat sebuah pola. Setelah n periode yang kita miliki
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+Kn = q^n K + R (1+q+\ldots+q^{n-1}) = q^n K + \frac{q^n-1}{q-1} R
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Rumusnya adalah rumus jumlah geometri yang diketahui Maxima.\\
+uk mempelajari masalahnya. Pertama kita mendefinisikan fungsi onepay()
+kita secara simbolis.
+\end{eulercomment}
+\begin{eulerprompt}
+>&sum(q^k,k,0,n-1); $& % = ev(%,simpsum)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\sum_{k=0}^{-1+n}{q^{k}}=\frac{-1+q^{n}}{-1+q}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Ini agak rumit. Jumlahnya dievaluasi dengan tanda "simpsum" untuk
+menguranginya menjadi hasil bagi. Mari kita membuat fungsi untuk ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>function fs(K,R,P,n) &= (1+P/100)^n*K + ((1+P/100)^n-1)/(P/100)*R; $&fs(K,R,P,n)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+K\,\left(1+\frac{P}{100}\right)^{n}+\frac{100\,\left(-1+\left(1+
+ \frac{P}{100}\right)^{n}\right)\,R}{P}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Fungsinya sama dengan fungsi f kita sebelumnya. Tapi ini lebih
+efektif.
+\end{eulercomment}
+\begin{eulerprompt}
+>longest f(5000,-200,3,47), longest fs(5000,-200,3,47)
+\end{eulerprompt}
+\begin{euleroutput}
+  Function f not found.
+  Try list ... to find functions!
+  Error in:
+  longest f(5000,-200,3,47), longest fs(5000,-200,3,47) ...
+                           ^
+\end{euleroutput}
+\begin{eulercomment}
+Sekarang kita dapat menggunakannya untuk menanyakan waktu n. Kapan
+modal kita habis? Perkiraan awal kami adalah 30 tahun.
+\end{eulercomment}
+\begin{eulerprompt}
+>solve("fs(5000,-330,3,x)",30)
+\end{eulerprompt}
+\begin{euleroutput}
+        20.51 
+\end{euleroutput}
+\begin{eulercomment}
+Jawaban ini mengatakan akan menjadi negatif setelah 21 tahun.
+
+Kita juga dapat menggunakan sisi simbolis Euler untuk menghitung rumus
+pembayaran.
+
+Asumsikan kita mendapatkan pinjaman sebesar K, dan membayar n
+pembayaran sebesar R (dimulai setelah tahun pertama)  meninggalkan
+sisa hutang sebesar Kn (pada saat pembayaran terakhir). Rumusnya jelas
+\end{eulercomment}
+\begin{eulerprompt}
+>equ &= fs(K,R,P,n)=Kn; $&equ
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fs}\left(K , R , P , n\right)={\it Kn}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Biasanya rumus ini diberikan dalam bentuk:
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+i = \frac{P}{100}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>equ &= (equ with P=100*i); $&equ
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it equ}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Kita dapat menyelesaikan nilai R secara simbolis.
+\end{eulercomment}
+\begin{eulerprompt}
+>$&solve(equ,R)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[  \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Seperti yang Anda lihat dari rumusnya, fungsi ini mengembalikan
+kesalahan floating point untuk i=0. Euler tetap merencanakannya.
+
+
+entu saja kita memiliki limit berikut
+\end{eulercomment}
+\begin{eulerprompt}
+>$&limit(R(5000,0,x,10),x,0)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\lim_{x\rightarrow 0}{R\left(5000 , 0 , x , 10\right)}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Yang jelas tanpa bunga kita harus membayar kembali 10 tarif 500.
+
+Persamaan tersebut juga dapat diselesaikan untuk n. Akan terlihat
+lebih bagus jika kita menerapkan beberapa penyederhanaan padanya.
+\end{eulercomment}
+\begin{eulerprompt}
+>fn &= solve(equ,n) | ratsimp; $&fn
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[  \right] 
+\]
+\end{eulerformula}
+\eulersubheading{Latihan Soal R2}
+\begin{eulercomment}
+Soal No. 49\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+\left(\frac{24a^{10}b^{-8}c^7}{12a^6b^{-3}c^5}\right)^{-5}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&((24*a^10*b^(-8)*c^7)/(12*a^6*b^(-3)*c^5))^(-5)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\frac{b^{25}}{32\,a^{20}\,c^{10}}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 50
+\end{eulercomment}
+\begin{eulerprompt}
+>$&((125*p^12*q^(-14)*r^22)/(25*p^8*q^6*r^(-15)))^(-4)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\frac{q^{80}}{625\,p^{16}\,r^{148}}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$&(2^6*2^(-3)/(2^10)/(2^(-8)))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+2
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 91
+\end{eulercomment}
+\begin{eulerprompt}
+>$&(4*(8-6)^2-4*3+2*8)/(3^1+19^0)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+5
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 92
+\end{eulercomment}
+\begin{eulerprompt}
+>$&((4*(8-6)^2+4)*(3-2*8))/(2^2*(2^3+5))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+-5
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 104
+\end{eulercomment}
+\begin{eulerprompt}
+>$&((m^(x-b)*n(x+b)^x)*(m^b*n^(-b))^x)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+m^{x-b}\,\left(\frac{m^{b}}{n^{b}}\right)^{x}\,n^{x}\left(x+b  \right)
+\]
+\end{eulerformula}
+\eulersubheading{Latihan Soal R3}
+\begin{eulercomment}
+Soal No. 9
+\end{eulercomment}
+\begin{eulerprompt}
+>$&((3*x^2-2*x-x^3+2)-(5*x^2-8*x-x^3+4))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+-2\,x^2+6\,x-2
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 13
+\end{eulercomment}
+\begin{eulerprompt}
+>$&((3*a^2)*((-7)*a^4))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+-21\,a^6
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 14
+\end{eulercomment}
+\begin{eulerprompt}
+>$&((8*y^5)*(9*y))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+72\,y^6
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 15
+\end{eulercomment}
+\begin{eulerprompt}
+>$&((6*x*y^3)*(9*x^4*y^2))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+54\,x^5\,y^5
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal. No 36
+\end{eulercomment}
+\begin{eulerprompt}
+>$%((4*x^2-5*y)^2)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left(54\,x^5\,y^5\right)(\left(4\,x^2-5\,y\right)^2)
+\]
+\end{eulerformula}
+\eulersubheading{Latihan Soal R4}
+\begin{eulercomment}
+Soal No. 23
+\end{eulercomment}
+\begin{eulerprompt}
+>$& factor(t^2+8*t+15)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left(t+3\right)\,\left(t+5\right)
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 24
+\end{eulercomment}
+\begin{eulerprompt}
+>$& factor(y^2+12*y+27)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left(y+3\right)\,\left(y+9\right)
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 121
+\end{eulercomment}
+\begin{eulerprompt}
+>$& factor(y^4-84+5*y^2)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left(y^2-7\right)\,\left(y^2+12\right)
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 77
+\end{eulercomment}
+\begin{eulerprompt}
+>$& factor((18*a^2*b)-(15*a*b^2))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+-3\,a\,b\,\left(5\,b-6\,a\right)
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 78
+\end{eulercomment}
+\begin{eulerprompt}
+>$& factor(4*x^2*y+12*x*y^2)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+4\,x\,y\,\left(3\,y+x\right)
+\]
+\end{eulerformula}
+\eulersubheading{Latihan Soal R5}
+\begin{eulercomment}
+Soal No. 31
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(7*(3*x+6)= 11-(x+2))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=-\frac{3}{2} \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 32
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(9*(2*x+8)= 20-(x-5))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=-\frac{47}{19} \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 35
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(x^2+3*x-28=0)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=4 , x=-7 \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 36
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(y^2-4*y-45=0)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ y=9 , y=-5 \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 37
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(x^2+5*x=0)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=-5 , x=0 \right] 
+\]
+\end{eulerformula}
+\eulersubheading{Latihan Soal R6}
+\begin{eulercomment}
+Soal No. 9
+\end{eulercomment}
+\begin{eulerprompt}
+>$&ratsimp((x^2-4)/(x^2-4*x+4))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\frac{x+2}{x-2}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 11
+\end{eulercomment}
+\begin{eulerprompt}
+>$&ratsimp((x^3-6*x^2+9*x)/(x^3-3*x^2))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\frac{x-3}{x}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 14
+\end{eulercomment}
+\begin{eulerprompt}
+>$&ratsimp((2*x^2-20*x+50)/(10*x^2-30*x-100))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\frac{x-5}{5\,x+10}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 15
+\end{eulercomment}
+\begin{eulerprompt}
+>$&ratsimp((6-x)/(x^2-36))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+-\frac{1}{x+6}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 20
+\end{eulercomment}
+\begin{eulerprompt}
+>$&ratsimp(((x^2-2*x-35)/(2*x^3-3*x^2))*((4*x^3-9*x)/(7*x-49)))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\frac{2\,x^2+13\,x+15}{7\,x}
+\]
+\end{eulerformula}
+\eulersubheading{Latihan soal 3.1}
+\begin{eulercomment}
+Soal No. 11
+\end{eulercomment}
+\begin{eulerprompt}
+>$ powerdisp: true
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\mathbf{true}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+> $&((-5+3*I)+(7+8*I))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+2+11\,i
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 31
+\end{eulercomment}
+\begin{eulerprompt}
+> $& (sqrt(-4)*(sqrt(-36)))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+-12
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 53
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(2*x^2+1=5*x)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=\frac{5-\sqrt{17}}{4} , x=\frac{\sqrt{17}+5}{4} \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 84
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(y^4-15*y^2-16=0)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ y=-i , y=i , y=-4 , y=4 \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 79
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(x^4-3*x^2+2=0)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=-\sqrt{2} , x=\sqrt{2} , x=-1 , x=1 \right] 
+\]
+\end{eulerformula}
+\eulersubheading{Latihan Soal 3.4}
+\begin{eulercomment}
+Soal No. 01
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve((1/4)+(1/5)=(1/t))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ t=\frac{20}{9} \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 9
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(x+(6/x)=5)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=3 , x=2 \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 15
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve((2/(x+5))+(1/(x-5))=(16/(x^2-25)))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=7 \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 29
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(sqrt(3*x-4)=1)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=\frac{5}{3} \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 33
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(sqrt(2*x-5)=2)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=\frac{9}{2} \right] 
+\]
+\end{eulerformula}
+\eulersubheading{Latihan Soal 3.5}
+\begin{eulercomment}
+Soal NO. 23
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(abs(x+3)-2=8,[x])
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ \left| x+3\right| =10 \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 24
+\end{eulercomment}
+\begin{eulerprompt}
+>$& fourier_elim(abs(x-4)+3=9,[x])
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left| x-4\right| +3=9 , \left[ x
+  \right] \right)
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 25
+\end{eulercomment}
+\begin{eulerprompt}
+>$& fourier_elim(abs(3*x+1)-4=(-1),[x])
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(\left| 3\,x+1\right| -4=-1 , \left[ x
+  \right] \right)
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 32
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(5-abs(4*x+3)=2)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ \left| 4\,x+3\right| =3 \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 30
+\end{eulercomment}
+\begin{eulerprompt}
+>$& fourier_elim(9-abs(x-2)=7,[x])
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+{\it fourier\_\_elim}\left(9-\left| x-2\right| =7 , \left[ x
+  \right] \right)
+\]
+\end{eulerformula}
+\eulersubheading{Latihan Soal 4.3}
+\begin{eulercomment}
+Soal No. 70
+\end{eulercomment}
+\begin{eulerprompt}
+> 
+>$ powerdisp: true
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\mathbf{true}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+> $&( ratsimp((x^4-y^4)/(x-y)))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+x^3+x^2\,y+x\,y^2+y^3
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 19
+\end{eulercomment}
+\begin{eulerprompt}
+>$& ratsimp((x^4-1)/(x-1))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+x^3+x^2+x+1
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 17
+\end{eulercomment}
+\begin{eulerprompt}
+>$ powerdisp:true
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\mathbf{true}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>$& ratsimp((x^5+x^3-x)/(x-3))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\frac{-x+x^3+x^5}{-3+x}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 22
+\end{eulercomment}
+\begin{eulerprompt}
+>$& solve(ratsimp((3*x^2-2*x^2+2)/(x-(1/4))))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left[ x=-\sqrt{2}\,i , x=\sqrt{2}\,i \right] 
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 11
+\end{eulercomment}
+\begin{eulerprompt}
+>$& (ratsimp((2*x^4+7*x^3+x-12)/(x+3)))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\frac{-12+x+7\,x^3+2\,x^4}{3+x}
+\]
+\end{eulerformula}
+\eulersubheading{Latihan Soal R7}
+\begin{eulercomment}
+Soal No. 76
+\end{eulercomment}
+\begin{eulerprompt}
+>$& factor(m^(6*n)-m^(3*n))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+m^{3\,n}\,\left(-1+m^{n}\right)\,\left(1+m^{n}+m^{2\,n}\right)
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 70
+\end{eulercomment}
+\begin{eulerprompt}
+>$& expand(((x^n)+10)*((x^n)-4))
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+-40+6\,x^{n}+x^{2\,n}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 75
+\end{eulercomment}
+\begin{eulerprompt}
+>$& factor(x^(2*t)-3*x^t-28)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left(-7+x^{t}\right)\,\left(4+x^{t}\right)
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 74
+\end{eulercomment}
+\begin{eulerprompt}
+>$& factor(y^(2*n)+16*y^n+64)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+\left(8+y^{n}\right)^2
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Soal No. 73
+\end{eulercomment}
+\begin{eulerprompt}
+>$& expand((a^n-b^n)^3)
+\end{eulerprompt}
+\begin{eulerformula}
+\[
+a^{3\,n}-3\,a^{2\,n}\,b^{n}+3\,a^{n}\,b^{2\,n}-b^{3\,n}
+\]
+\end{eulerformula}
+\end{eulernotebook}
+\end{document}
